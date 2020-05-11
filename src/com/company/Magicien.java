@@ -4,12 +4,12 @@ public class Magicien {
 
     //*****************  VARIABLES  (public)  ************************
 
-    String nom;
-    int vie; //(3-6)
-    int force; //(8-15)
-    String sort; // Sort = objet avec nom et niveau d'attaque
-    String philtre;
-    String image;
+    private String nom;
+    private int vie; //(3-6)
+    private int force; //(8-15)
+    private String sort; // private Sort = { private String nom ; private int force; }
+    private String philtre;
+    private String image;
 
 
     //**************    CONSTRUCTEURS   *******************************
@@ -33,13 +33,13 @@ public class Magicien {
 
     }
 
-    public Magicien(String pnom, int pvie, int pforce, /*String psort, String pphiltre,*/ String pimage) {
+    public Magicien(String pnom, int pvie, int pforce, String psort, String pphiltre, String pimage) {
         System.out.println("Crétaion d'un nouveau magicien avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
-        //sort = psort;
-        //philtre = pphiltre;
+        sort = psort;
+        philtre = pphiltre;
         image = pimage;
 
     }
@@ -50,10 +50,12 @@ public class Magicien {
 
     public String toString() {
         return
-                "Nom du magicien : " + this.nom + "/" +
-                        "l'image : " + this.image + "/" +
-                        "points de vie : " + this.vie + "/" +
-                        "force : " + this.force + "/";
+                "Nom du magicien : " + this.nom
+                        + "\nimage : " + this.image
+                        + "\npoints de vie : " + this.vie
+                        + "\nforce : " + this.force
+                        + "\nsort : " + this.sort
+                        + "\nphiltre : " + this.philtre;
     }
 
     //************** GETTEURS  ******************

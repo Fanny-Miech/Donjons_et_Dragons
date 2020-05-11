@@ -36,7 +36,7 @@ public class Guerrier {
     }
 
     public Guerrier(String pnom, int pvie, int pforce, String parme, String pbouclier, String pimage) {
-        System.out.println("Crétaion d'un nouveau guerrier avec des paramètres.");
+        System.out.println("Création d'un nouveau guerrier avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
@@ -50,12 +50,14 @@ public class Guerrier {
 
     //toString -> retourne nom, image, vie et force.
 
-    public String toString(){
+    public String toString() {
         return
                 "Nom du guerrier : " + this.nom
                         + "\nimage : " + this.image
                         + "\npoints de vie : " + this.vie
-                        + "\nforce : " + this.force;
+                        + "\nforce : " + this.force
+                        + "\narme : " + this.arme
+                        + "\nbouclier : " + this.bouclier;
     }
 
     //***********    ACCESSEURS     (Getteurs)  ************************
