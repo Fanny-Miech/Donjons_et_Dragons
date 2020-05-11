@@ -10,10 +10,11 @@ public class Main {
         String test = jeanpaul.toString();
         int testVie = jeanpaul.getVie();
         System.out.println(test);
-        System.out.println("force de vie : " + testVie);
+        System.out.println("Points de vie : " + testVie);
 
         //test Menu
-        Menu menuTest = new Menu();
-        menuTest.PersoChoose();
+        Menu part1 = new Menu();
+        part1.welcome();
+        part1.chooseYourPerso();
     }
 }

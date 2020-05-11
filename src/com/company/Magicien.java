@@ -15,6 +15,7 @@ public class Magicien {
     public Magicien() {
         System.out.println("Création d'un nouveau magicien.");
         nom = "Inconnu";
+        image = "Inconnu";
         vie = 3;
         force = 8;
 
@@ -23,13 +24,14 @@ public class Magicien {
     public Magicien(String pnom) {
         System.out.println("Création d'un nouveau magicien avec un nom.");
         nom = pnom;
+        image = "Inconnu";
         vie = 5;
         force = 5;
 
     }
 
-    public Magicien(String pnom, int pvie, int pforce, String pimage) {
-        System.out.println("Crétaion d'un nouveau magicien avec des paramètres.");
+    public Magicien(String pnom, String pimage, int pvie, int pforce) {
+        System.out.println("Création d'un nouveau magicien avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
@@ -44,9 +46,9 @@ public class Magicien {
     public String toString() {
         return
                 "Nom du magicien : " + this.nom
-                        + "\nimage : " + this.image
-                        + "\npoints de vie : " + this.vie
-                        + "\nforce : " + this.force;
+                        + "\nImage : " + this.image
+                        + "\nPoints de vie : " + this.vie
+                        + "\nForce d'attaque : " + this.force;
     }
 
     //************** GETTERS  ******************

@@ -45,9 +45,9 @@ public class Guerrier {
     public String toString() {
         return
                 "Nom du guerrier : " + this.nom
-                        + "\nimage : " + this.image
-                        + "\npoints de vie : " + this.vie
-                        + "\nforce : " + this.force;
+                        + "\nImage : " + this.image
+                        + "\nPoints de vie : " + this.vie
+                        + "\nForce d'attaque : " + this.force;
 
     }
 
