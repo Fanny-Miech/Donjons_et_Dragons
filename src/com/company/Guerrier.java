@@ -7,8 +7,6 @@ public class Guerrier {
     private String nom;
     private int vie; //(5-10)
     private int force;//(5-10)
-    private String arme; //arme  = objet avec nom et niveau d'attaque
-    private String bouclier;
     private String image;
 
 
@@ -19,8 +17,6 @@ public class Guerrier {
         nom = "Inconnu";
         vie = 5;
         force = 5;
-        arme = "Inconnu";
-        bouclier = "Inconnu";
         image = "Inconnu";
     }
 
@@ -29,19 +25,15 @@ public class Guerrier {
         nom = pnom;
         vie = 5;
         force = 5;
-        arme = "Inconnu";
-        bouclier = "Inconnu";
         image = "Inconnu";
 
     }
 
-    public Guerrier(String pnom, int pvie, int pforce, String parme, String pbouclier, String pimage) {
+    public Guerrier(String pnom, int pvie, int pforce, String pimage) {
         System.out.println("Création d'un nouveau guerrier avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
-        arme = parme;
-        bouclier = pbouclier;
         image = pimage;
 
     }
@@ -55,12 +47,11 @@ public class Guerrier {
                 "Nom du guerrier : " + this.nom
                         + "\nimage : " + this.image
                         + "\npoints de vie : " + this.vie
-                        + "\nforce : " + this.force
-                        + "\narme : " + this.arme
-                        + "\nbouclier : " + this.bouclier;
+                        + "\nforce : " + this.force;
+
     }
 
-    //***********    ACCESSEURS     (Getteurs)  ************************
+    //***********    ACCESSEURS     (Getters)  ************************
 
     //Retourne le nom du guerrier
     public String getNom() {
@@ -77,21 +68,11 @@ public class Guerrier {
         return force;
     }
 
-    //Retourne l'arme du guerrier
-    public String getArme() {
-        return arme;
-    }
-
-    //Retourne le bouclier du guerrier
-    public String getBouclier() {
-        return bouclier;
-    }
-
     public String getImage() {
         return image;
     }
 
-    //*********************   MUTATEURS   (setteurs)  ****************************
+    //*********************   MUTATEURS   (setters)  ****************************
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -103,14 +84,6 @@ public class Guerrier {
 
     public void setForce(int force) {
         this.force = force;
-    }
-
-    public void setArme(String arme) {
-        this.arme = arme;
-    }
-
-    public void setBouclier(String bouclier) {
-        this.bouclier = bouclier;
     }
 
     public void setImage(String image) {

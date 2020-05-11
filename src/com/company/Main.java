@@ -6,7 +6,7 @@ public class Main {
 	// write your code here
 
         //test Guerrier
-        Guerrier jeanpaul = new Guerrier("jean_paul", 5, 5, "épée", "waow", "nada");
+        Guerrier jeanpaul = new Guerrier("jean_paul", 5, 5, "nada");
         String test = jeanpaul.toString();
         int testVie = jeanpaul.getVie();
         System.out.println(test);

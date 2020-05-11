@@ -7,8 +7,6 @@ public class Magicien {
     private String nom;
     private int vie; //(3-6)
     private int force; //(8-15)
-    private String sort; // private Sort = { private String nom ; private int force; }
-    private String philtre;
     private String image;
 
 
@@ -19,8 +17,7 @@ public class Magicien {
         nom = "Inconnu";
         vie = 3;
         force = 8;
-        sort = "Inconnu";
-        philtre = "Inconnu";
+
     }
 
     public Magicien(String pnom) {
@@ -28,18 +25,14 @@ public class Magicien {
         nom = pnom;
         vie = 5;
         force = 5;
-        sort = "Inconnu";
-        philtre = "Inconnu";
 
     }
 
-    public Magicien(String pnom, int pvie, int pforce, String psort, String pphiltre, String pimage) {
+    public Magicien(String pnom, int pvie, int pforce, String pimage) {
         System.out.println("Crétaion d'un nouveau magicien avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
-        sort = psort;
-        philtre = pphiltre;
         image = pimage;
 
     }
@@ -53,12 +46,10 @@ public class Magicien {
                 "Nom du magicien : " + this.nom
                         + "\nimage : " + this.image
                         + "\npoints de vie : " + this.vie
-                        + "\nforce : " + this.force
-                        + "\nsort : " + this.sort
-                        + "\nphiltre : " + this.philtre;
+                        + "\nforce : " + this.force;
     }
 
-    //************** GETTEURS  ******************
+    //************** GETTERS  ******************
 
 
     public String getNom() {
@@ -73,19 +64,11 @@ public class Magicien {
         return force;
     }
 
-    public String getSort() {
-        return sort;
-    }
-
-    public String getPhiltre() {
-        return philtre;
-    }
-
     public String getImage() {
         return image;
     }
 
-    //**********************   SETTEURS  ***********************
+    //**********************   SETTERS  ***********************
 
 
     public void setNom(String nom) {
@@ -98,14 +81,6 @@ public class Magicien {
 
     public void setForce(int force) {
         this.force = force;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
-
-    public void setPhiltre(String philtre) {
-        this.philtre = philtre;
     }
 
     public void setImage(String image) {
