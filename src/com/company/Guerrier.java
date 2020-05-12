@@ -51,6 +51,7 @@ public class Guerrier {
 
     }
 
+
     //***********    ACCESSEURS     (Getters)  ************************
 
     //Retourne le nom du guerrier

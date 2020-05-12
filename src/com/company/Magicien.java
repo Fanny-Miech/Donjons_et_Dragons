@@ -51,6 +51,7 @@ public class Magicien {
                         + "\nForce d'attaque : " + this.force;
     }
 
+
     //************** GETTERS  ******************
 
 
