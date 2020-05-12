@@ -1,36 +1,37 @@
-package com.company;
+package com.company.personnages;
 
-public class Guerrier {
+public class Magicien {
 
-    //*****************  ATTRIBUTS  (public)  ************************
+    //*****************  VARIABLES  (public)  ************************
 
     private String nom;
-    private int vie; //(5-10)
-    private int force;//(5-10)
+    private int vie; //(3-6)
+    private int force; //(8-15)
     private String image;
 
 
     //**************    CONSTRUCTEURS   *******************************
 
-    public Guerrier() {
-        System.out.println("Création d'un nouveau guerrier.");
+    public Magicien() {
+        System.out.println("Création d'un nouveau magicien.");
         nom = "Inconnu";
-        vie = 5;
-        force = 5;
         image = "Inconnu";
+        vie = 3;
+        force = 8;
+
     }
 
-    public Guerrier(String pnom) {
-        System.out.println("Création d'un nouveau guerrier avec un nom.");
+    public Magicien(String pnom) {
+        System.out.println("Création d'un nouveau magicien avec un nom.");
         nom = pnom;
+        image = "Inconnu";
         vie = 5;
         force = 5;
-        image = "Inconnu";
 
     }
 
-    public Guerrier(String pnom, int pvie, int pforce, String pimage) {
-        System.out.println("Création d'un nouveau guerrier avec des paramètres.");
+    public Magicien(String pnom, String pimage, int pvie, int pforce) {
+        System.out.println("Création d'un nouveau magicien avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
@@ -44,27 +45,24 @@ public class Guerrier {
 
     public String toString() {
         return
-                "Nom du guerrier : " + this.nom
+                "Nom du magicien : " + this.nom
                         + "\nImage : " + this.image
                         + "\nPoints de vie : " + this.vie
                         + "\nForce d'attaque : " + this.force;
-
     }
 
 
-    //***********    ACCESSEURS     (Getters)  ************************
+    //************** GETTERS  ******************
 
-    //Retourne le nom du guerrier
+
     public String getNom() {
         return nom;
     }
 
-    //Retourne la vie du guerrier
     public int getVie() {
         return vie;
     }
 
-    //Retourne la force du guerrier
     public int getForce() {
         return force;
     }
@@ -73,7 +71,8 @@ public class Guerrier {
         return image;
     }
 
-    //*********************   MUTATEURS   (setters)  ****************************
+    //**********************   SETTERS  ***********************
+
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -90,4 +89,5 @@ public class Guerrier {
     public void setImage(String image) {
         this.image = image;
     }
+
 }

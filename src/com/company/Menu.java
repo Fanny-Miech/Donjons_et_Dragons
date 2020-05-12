@@ -1,6 +1,9 @@
 package com.company;
 
 //Nécessaire pour lire les input du player
+import com.company.personnages.*;
+
+
 import java.util.Scanner;
 
 public class Menu {
