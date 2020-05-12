@@ -1,7 +1,6 @@
 package com.company;
 
 //Nécessaire pour lire les input du player
-
 import java.util.Scanner;
 
 public class Menu {
@@ -55,12 +54,17 @@ public class Menu {
             }
 
         }
+
+        System.out.println("On lance le jeu ?");
+        Play play = new Play();
+        play.playGame();
+
         return playerPerso;
 
     }
 
 
-    /**
+    /*
      *
      *
      *
@@ -72,7 +76,7 @@ public class Menu {
 
         Guerrier guerrier = new Guerrier();
 
-        /**
+        /*
          * choisir un nom pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
          */
         boolean okName = false;
@@ -103,8 +107,8 @@ public class Menu {
             }
         }
 
-        /**
-         * choisir une image pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
+        /*
+          choisir une image pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
          */
         boolean okImage = false;
 
@@ -134,7 +138,7 @@ public class Menu {
             }
         }
 
-        /**
+        /*
          * choisir les points de vie du nouveau guerrier
          */
         boolean okVie = false;
@@ -150,15 +154,14 @@ public class Menu {
 
             if (guerrierVie < 5 || guerrierVie > 10) {
                 System.out.println("Merci d'entrer des points de vie entre 5 et 10 :");
-            }
-            else if (guerrierVie >=5 && guerrierVie <= 10) {
+            } else if (guerrierVie >= 5 && guerrierVie <= 10) {
                 guerrier.setVie(guerrierVie);
                 okVie = true;
             }
 
         }
 
-        /**
+        /*
          * choisir la force du nouveau guerrier
          */
         boolean okForce = false;
@@ -174,8 +177,7 @@ public class Menu {
 
             if (guerrierForce < 5 || guerrierForce > 10) {
                 System.out.println("Merci d'entrer une force entre 5 et 10 :");
-            }
-            else if (guerrierForce >=5 && guerrierForce <= 10) {
+            } else if (guerrierForce >= 5 && guerrierForce <= 10) {
                 guerrier.setForce(guerrierForce);
                 okForce = true;
             }
@@ -187,10 +189,16 @@ public class Menu {
         return guerrier;
     }
 
+
+    /*
+     *
+     ****@return un nouveau Magicien
+     */
+
     public Object createYourWizard() {
         Magicien magicien = new Magicien();
 
-        /**
+        /*
          * choisir un nom pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
          */
         boolean okName = false;
@@ -221,7 +229,7 @@ public class Menu {
             }
         }
 
-        /**
+        /*
          * choisir une image pour le nouveau magicien:: j'ai mis un boolean pour les vérifs regex plus tard....
          */
         boolean okImage = false;
@@ -252,7 +260,7 @@ public class Menu {
             }
         }
 
-        /**
+        /*
          * choisir les points de vie du nouveau guerrier
          */
         boolean okVie = false;
@@ -266,17 +274,17 @@ public class Menu {
             int magicienVie = scanner.nextInt();
 
 
-            if (magicienVie < 3 || magicienVie > 6) {
-                System.out.println("Merci d'entrer des points de vie entre 3 et 6 :");
-            }
-            else if (magicienVie >=3 && magicienVie <= 6) {
+            if(magicienVie >= 3 && magicienVie <= 6) {
                 magicien.setVie(magicienVie);
                 okVie = true;
+            }
+            else {
+                System.out.println("Merci d'entrer des points de vie entre 3 et 6 :");
             }
 
         }
 
-        /**
+        /*
          * choisir la force du nouveau guerrier
          */
         boolean okForce = false;
@@ -290,12 +298,11 @@ public class Menu {
             int magicienForce = scanner.nextInt();
 
 
-            if (magicienForce < 8 || magicienForce > 15) {
-                System.out.println("Merci d'entrer une force entre 8 et 15 :");
-            }
-            else if (magicienForce >=8 && magicienForce <= 15) {
+            if (magicienForce >= 8 && magicienForce <= 15) {
                 magicien.setForce(magicienForce);
                 okForce = true;
+            } else {
+                System.out.println("Merci d'entrer une force entre 8 et 15 :");
             }
 
         }
