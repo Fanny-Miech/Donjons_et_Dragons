@@ -1,13 +1,12 @@
 package com.company.personnages;
 
-public class Magicien {
+public class Magicien extends Heros {
 
     //*****************  VARIABLES  (public)  ************************
 
     private String nom;
     private int vie; //(3-6)
     private int force; //(8-15)
-    private String image;
 
 
     //**************    CONSTRUCTEURS   *******************************
@@ -15,7 +14,6 @@ public class Magicien {
     public Magicien() {
         System.out.println("Création d'un nouveau magicien.");
         nom = "Inconnu";
-        image = "Inconnu";
         vie = 3;
         force = 8;
 
@@ -24,18 +22,16 @@ public class Magicien {
     public Magicien(String pnom) {
         System.out.println("Création d'un nouveau magicien avec un nom.");
         nom = pnom;
-        image = "Inconnu";
         vie = 5;
         force = 5;
 
     }
 
-    public Magicien(String pnom, String pimage, int pvie, int pforce) {
+    public Magicien(String pnom, int pvie, int pforce) {
         System.out.println("Création d'un nouveau magicien avec des paramètres.");
         nom = pnom;
         vie = pvie;
         force = pforce;
-        image = pimage;
 
     }
 
@@ -46,7 +42,6 @@ public class Magicien {
     public String toString() {
         return
                 "Nom du magicien : " + this.nom
-                        + "\nImage : " + this.image
                         + "\nPoints de vie : " + this.vie
                         + "\nForce d'attaque : " + this.force;
     }
@@ -67,27 +62,36 @@ public class Magicien {
         return force;
     }
 
-    public String getImage() {
-        return image;
-    }
 
     //**********************   SETTERS  ***********************
 
 
     public void setNom(String nom) {
-        this.nom = nom;
+        if (!nom.equals("")) {
+            this.nom = nom;
+        } else {
+            this.nom = "Harry";
+        }
     }
 
     public void setVie(int vie) {
-        this.vie = vie;
+        if (vie >= 3 && vie <= 6) {
+            this.vie = vie;
+        } else if (vie > 6) {
+            this.vie = 6;
+        } else {
+            this.vie = 3;
+        }
     }
 
     public void setForce(int force) {
-        this.force = force;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+        if (force >= 8 && force <= 15) {
+            this.force = force;
+        } else if (force > 15) {
+            this.force = 15;
+        } else {
+            this.force = 8;
+        }
     }
 
 }

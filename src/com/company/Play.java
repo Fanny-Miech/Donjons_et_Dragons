@@ -18,11 +18,14 @@ public class Play {
 
     public void playGame() {
         while (playerCase < nbCase) {
+            Scanner sc = new Scanner(System.in);
+            sc.nextLine();
+
             int newDice = this.dice();
             System.out.println(newDice);
             playerCase += newDice;
             lap ++;
-            System.out.println("Ton perso se trouve sur la case " + playerCase + "/64.");
+            System.out.println("Tour n° : " + lap + "\nTon perso se trouve sur la case " + playerCase + "/64.");
         }
 
         System.out.println("You WIN !");

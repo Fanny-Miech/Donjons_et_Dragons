@@ -1,8 +1,8 @@
 package com.company;
 
 //Nécessaire pour lire les input du player
-import com.company.personnages.*;
 
+import com.company.personnages.*;
 
 import java.util.Scanner;
 
@@ -16,12 +16,12 @@ public class Menu {
     }
 
     //method début du jeu pour choisir son perso
-    public Object chooseYourPerso() {
+    public Heros chooseYourPerso() {
 
         boolean isReady = false;
         //petite Phrase d'entrée de jeu : "choisis ton perso
         System.out.println("\nChoisis ton perso (Guerrier / Magicien) : ");
-        Object playerPerso = new Object();
+        Heros playerPerso = new Heros();
 
 
         //Tant qu'on n'est pas prêt :
@@ -32,28 +32,26 @@ public class Menu {
             //nouvelle variable playerChoice = input du player
             String playerChoice = scanner.nextLine();
 
+            //si playerChoice == Guerrier
+            //créer un Guerrier
             switch (playerChoice) {
-
-                //si playerChoice == Guerrier
-                case "Guerrier":
+                case "Guerrier" -> {
                     System.out.println("Tu as choisi le Guerrier.");
                     isReady = true;
-                    //créer un Guerrier
                     System.out.println("\nTu peux maintenant créer ton Guerrier !");
-                    playerPerso = this.createYourWarrior();
-                    break;
-                case "Magicien":
+                    playerPerso = this.createYourHeros(playerChoice);
+                }
+                case "Magicien" -> {
                     System.out.println("Tu as choisi le Magicien.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Magicien !");
                     playerPerso = this.createYourWizard();
-                    break;
-                case "Echap":
+                }
+                case "Echap" -> {
                     System.out.println("Tu as quitté le jeu ! A bientôt.");
                     isReady = true;
-                    break;
-                default:
-                    System.out.println("Choisis entre Guerrier et Magicien stp :)");
+                }
+                default -> System.out.println("Choisis entre Guerrier et Magicien stp :)");
             }
 
         }
@@ -67,15 +65,18 @@ public class Menu {
     }
 
 
+    public Heros createYourHeros(String type) {
+        Heros yourHeros = new Guerrier();
+        return yourHeros;
+    }
+
     /*
-     *
-     *
      *
      * @return un nouveau Guerrier
      */
 
 
-    public Object createYourWarrior() {
+    public Guerrier createYourWarrior() {
 
         Guerrier guerrier = new Guerrier();
 
@@ -95,48 +96,17 @@ public class Menu {
 
 
             switch (guerrierName) {
-                case "Echap":
-                    System.out.println("Tu as quitté le jeu ! A bientôt :)");
-                    okName = true;
-                    break;
-                case "":
-                    guerrier.setNom("Inconnu");
-                    okName = true;
-                    break;
-                default:
-                    guerrier.setNom(guerrierName);
-                    okName = true;
-
-            }
-        }
-
-        /*
-          choisir une image pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
-         */
-        boolean okImage = false;
-
-        while (!okImage) {
-
-            System.out.println("\nChoisis maintenant une image : ");
-
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            String guerrierImage = scanner.nextLine();
-
-
-            switch (guerrierImage) {
                 case "Echap" -> {
                     System.out.println("Tu as quitté le jeu ! A bientôt :)");
-                    okImage = true;
+                    okName = true;
                 }
                 case "" -> {
-                    guerrier.setImage("Inconnu");
-                    okImage = true;
+                    guerrier.setNom("Inconnu");
+                    okName = true;
                 }
                 default -> {
-                    guerrier.setImage(guerrierImage);
-                    okImage = true;
+                    guerrier.setNom(guerrierName);
+                    okName = true;
                 }
             }
         }
@@ -155,11 +125,11 @@ public class Menu {
             int guerrierVie = scanner.nextInt();
 
 
-            if (guerrierVie < 5 || guerrierVie > 10) {
-                System.out.println("Merci d'entrer des points de vie entre 5 et 10 :");
-            } else if (guerrierVie >= 5 && guerrierVie <= 10) {
+            if (guerrierVie >= 5 && guerrierVie <= 10) {
                 guerrier.setVie(guerrierVie);
                 okVie = true;
+            } else {
+                System.out.println("Merci d'entrer des points de vie entre 5 et 10 :");
             }
 
         }
@@ -177,16 +147,14 @@ public class Menu {
             //nouvelle variable nom du guerrier input
             int guerrierForce = scanner.nextInt();
 
-
-            if (guerrierForce < 5 || guerrierForce > 10) {
-                System.out.println("Merci d'entrer une force entre 5 et 10 :");
-            } else if (guerrierForce >= 5 && guerrierForce <= 10) {
+            if (guerrierForce >= 5 && guerrierForce <= 10) {
                 guerrier.setForce(guerrierForce);
                 okForce = true;
+            } else {
+                System.out.println("Merci d'entrer une force entre 5 et 10 :");
             }
 
         }
-
 
         System.out.println(guerrier.toString());
         return guerrier;
@@ -198,119 +166,55 @@ public class Menu {
      ****@return un nouveau Magicien
      */
 
-    public Object createYourWizard() {
-        Magicien magicien = new Magicien();
+    public Magicien createYourWizard() {
 
-        /*
-         * choisir un nom pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
-         */
-        boolean okName = false;
+        Magicien magicien;
 
-        while (!okName) {
+        // Input nom, vie et force du player
 
-            System.out.println("\nChoisis un nom pour ton Magicien : ");
+        System.out.println("Tu vas créer ton Magicien.");
 
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du magicien input
-            String magicienName = scanner.nextLine();
+        //Instancie un nouveau scanner
+        Scanner scanner = new Scanner(System.in);
 
-
-            switch (magicienName) {
-                case "Echap":
-                    System.out.println("Tu as quitté le jeu ! A bientôt :)");
-                    okName = true;
-                    break;
-                case "":
-                    magicien.setNom("Inconnu");
-                    okName = true;
-                    break;
-                default:
-                    magicien.setNom(magicienName);
-                    okName = true;
-
-            }
+        System.out.println("\nChoisis un nom pour ton Magicien : ");
+        //nouvelle variable nom du magicien input
+        String magicienName = scanner.nextLine();
+        if (magicienName.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
         }
 
-        /*
-         * choisir une image pour le nouveau magicien:: j'ai mis un boolean pour les vérifs regex plus tard....
-         */
-        boolean okImage = false;
-
-        while (!okImage) {
-
-            System.out.println("\nChoisis maintenant une image : ");
-
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            String magicienImage = scanner.nextLine();
-
-
-            switch (magicienImage) {
-                case "Echap" -> {
-                    System.out.println("Tu as quitté le jeu ! A bientôt :)");
-                    okImage = true;
-                }
-                case "" -> {
-                    magicien.setImage("Inconnu");
-                    okImage = true;
-                }
-                default -> {
-                    magicien.setImage(magicienImage);
-                    okImage = true;
-                }
-            }
+        System.out.println("\nChoisis une force de vie pour ton Magicien (entre 3 et 6) : ");
+        String magicienVie = scanner.nextLine();
+        if (magicienVie.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
         }
 
-        /*
-         * choisir les points de vie du nouveau guerrier
-         */
-        boolean okVie = false;
-
-        System.out.println("\nChoisis maintenant ses points de vie (entre 3 et 6) : ");
-
-        while (!okVie) {
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            int magicienVie = scanner.nextInt();
-
-
-            if(magicienVie >= 3 && magicienVie <= 6) {
-                magicien.setVie(magicienVie);
-                okVie = true;
-            }
-            else {
-                System.out.println("Merci d'entrer des points de vie entre 3 et 6 :");
-            }
-
+        System.out.println("\nChoisis une force d'attaque pour ton Magicien (entre 8 et 15) : ");
+        String magicienForce = scanner.nextLine();
+        if (magicienForce.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
         }
 
-        /*
-         * choisir la force du nouveau guerrier
-         */
-        boolean okForce = false;
 
-        System.out.println("\nPour finir choisis sa force (entre 8 et 15) : ");
+        //Vérif des inputs et construction d'un Magicien en fonction des input
 
-        while (!okForce) {
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du magicien input
-            int magicienForce = scanner.nextInt();
-
-
-            if (magicienForce >= 8 && magicienForce <= 15) {
-                magicien.setForce(magicienForce);
-                okForce = true;
-            } else {
-                System.out.println("Merci d'entrer une force entre 8 et 15 :");
-            }
-
+        if (magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
+            magicien = new Magicien();
         }
 
-        System.out.println(magicien.toString());
+        else if (!magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
+            magicien = new Magicien(magicienName);
+        }
+
+        else {
+            magicien = new Magicien(magicienName, Integer.parseInt(magicienVie), Integer.parseInt(magicienForce));
+        }
+
+       System.out.println(magicien.toString());
         return magicien;
     }
 }
