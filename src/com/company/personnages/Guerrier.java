@@ -4,35 +4,27 @@ public class Guerrier extends Heros {
 
     //*****************  ATTRIBUTS  (public)  ************************
 
-    private String nom;
-    private int vie; //(5-10)
-    private int force;//(5-10)
+//    private String nom;
+//    private int vie; //(5-10)
+//    private int force;//(5-10)
 
 
     //**************    CONSTRUCTEURS   *******************************
 
     public Guerrier() {
-        System.out.println("Création d'un nouveau guerrier.");
-        nom = "Inconnu";
-        vie = 5;
-        force = 5;
-    }
+            super("Inconnu", 3, 8, "??", "??");
 
-    public Guerrier(String nom) {
-        System.out.println("Création d'un nouveau guerrier avec un nom.");
-        this.nom = nom;
-        vie = 5;
-        force = 5;
+        }
 
-    }
+    public Guerrier(String pickNom) {
+            super(pickNom, 5, 5, "??", "??");
 
-    public Guerrier(String pnom, int pvie, int pforce) {
-        System.out.println("Création d'un nouveau guerrier avec des paramètres.");
-        nom = pnom;
-        vie = pvie;
-        force = pforce;
+        }
 
-    }
+    public Guerrier(String pickNom, int pickVie, int pickForce) {
+            super(pickNom, pickVie, pickForce, "??", "??");
+
+        }
 
     //*****************   METHODES **********************
 

@@ -4,34 +4,25 @@ public class Magicien extends Heros {
 
     //*****************  VARIABLES  (public)  ************************
 
-    private String nom;
-    private int vie; //(3-6)
-    private int force; //(8-15)
+//    private String nom;
+//    private int vie; //(3-6)
+//    private int force; //(8-15)
 
 
     //**************    CONSTRUCTEURS   *******************************
 
     public Magicien() {
-        System.out.println("Création d'un nouveau magicien.");
-        nom = "Inconnu";
-        vie = 3;
-        force = 8;
+        super("Inconnu", 3, 8, "??", "??");
 
     }
 
-    public Magicien(String pnom) {
-        System.out.println("Création d'un nouveau magicien avec un nom.");
-        nom = pnom;
-        vie = 5;
-        force = 5;
+    public Magicien(String pickNom) {
+        super(pickNom, 5, 5, "??", "??");
 
     }
 
-    public Magicien(String pnom, int pvie, int pforce) {
-        System.out.println("Création d'un nouveau magicien avec des paramètres.");
-        nom = pnom;
-        vie = pvie;
-        force = pforce;
+    public Magicien(String pickNom, int pickVie, int pickForce) {
+        super(pickNom, pickVie, pickForce, "??", "??");
 
     }
 

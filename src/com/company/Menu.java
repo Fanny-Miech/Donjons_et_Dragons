@@ -39,14 +39,15 @@ public class Menu {
                     System.out.println("Tu as choisi le Guerrier.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Guerrier !");
-                    //playerPerso = this.createYourHeros(playerChoice);
-                    playerPerso = this.createYourWarrior();
+                    playerPerso = this.createYourHeros(playerChoice);
+                    //playerPerso = this.createYourWarrior();
                 }
                 case "Magicien" -> {
                     System.out.println("Tu as choisi le Magicien.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Magicien !");
-                    playerPerso = this.createYourWizard();
+                    playerPerso = this.createYourHeros(playerChoice);
+                    //playerPerso = this.createYourWizard();
                 }
                 case "Echap" -> {
                     System.out.println("Tu as quitté le jeu ! A bientôt.");
@@ -67,7 +68,95 @@ public class Menu {
 
 
     public Heros createYourHeros(String type) {
-        Heros yourHeros = new Guerrier();
+        Heros yourHeros;
+
+        //Saisir l'input du player pour construire son Heros
+        Scanner scanner = new Scanner(System.in);
+
+
+        //récupère input name
+        System.out.println("\nChoisis un nom pour ton " + type + " : ");
+        String herosName = scanner.nextLine();
+        if (herosName.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
+        }
+
+
+        //récupère input vie
+        String vie;
+        if (type.equals("Guerrier")) {
+            vie = "(entre 5 et 10)";
+        } else {
+            vie = "(entre 3 et 6)";
+        }
+        System.out.println("\nChoisis une force de vie pour ton " + type + " " + vie + " : ");
+        String herosVie = scanner.nextLine();
+        if (herosVie.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
+        }
+
+        //récupérer input force
+        String force;
+        if (type.equals("Guerrier")) {
+            force = "(entre 5 et 10)";
+        } else {
+            force = "(entre 8 et 15)";
+        }
+        System.out.println("\nChoisis une force d'attaque pour ton " + type + " " + force + " : ");
+        String herosForce = scanner.nextLine();
+        if (herosForce.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
+        }
+
+
+        //Vérif des inputs et construction d'un Her Magicien en fonction des input
+
+        if (herosName.equals("") && herosVie.equals("") && herosForce.equals("")) {
+            if (type.equals("Guerrier")) {
+                yourHeros = new Guerrier();
+            } else {
+                yourHeros = new Magicien();
+            }
+
+        } else if (!herosName.equals("") && herosVie.equals("") && herosForce.equals("")) {
+            if (type.equals("Guerrier")) {
+                yourHeros = new Guerrier(herosName);
+            } else {
+                yourHeros = new Magicien(herosName);
+            }
+        } else {
+            if (type.equals("Guerrier")) {
+                if (Integer.parseInt(herosVie) > 10) {
+                    herosVie = "10";
+                } else if (Integer.parseInt(herosVie) < 5) {
+                    herosVie = "5";
+                }
+                if (Integer.parseInt(herosForce) > 10) {
+                    herosForce = "10";
+                } else if (Integer.parseInt(herosForce) < 5) {
+                    herosForce = "5";
+                }
+                yourHeros = new Guerrier(herosName, Integer.parseInt(herosVie), Integer.parseInt(herosForce));
+            } else {
+                if (Integer.parseInt(herosVie) > 6) {
+                    herosVie = "6";
+                } else if (Integer.parseInt(herosVie) < 3) {
+                    herosVie = "3";
+                }
+                if (Integer.parseInt(herosForce) > 15) {
+                    herosForce = "15";
+                } else if (Integer.parseInt(herosForce) < 8) {
+                    herosForce = "8";
+                }
+                yourHeros = new Guerrier(herosName, Integer.parseInt(herosVie), Integer.parseInt(herosForce));
+            }
+
+        }
+
+        System.out.println(yourHeros.toString());
         return yourHeros;
     }
 
@@ -113,21 +202,17 @@ public class Menu {
 
         if (guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
             guerrier = new Guerrier();
-        }
-
-        else if (!guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
+        } else if (!guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
             guerrier = new Guerrier(guerrierName);
-        }
-
-        else {
-            if (Integer.parseInt(guerrierVie)>10) {
+        } else {
+            if (Integer.parseInt(guerrierVie) > 10) {
                 guerrierVie = "10";
-            } else if (Integer.parseInt(guerrierVie)<5) {
+            } else if (Integer.parseInt(guerrierVie) < 5) {
                 guerrierVie = "5";
             }
-            if (Integer.parseInt(guerrierForce)>10) {
+            if (Integer.parseInt(guerrierForce) > 10) {
                 guerrierForce = "10";
-            } else if (Integer.parseInt(guerrierForce)<5) {
+            } else if (Integer.parseInt(guerrierForce) < 5) {
                 guerrierForce = "5";
             }
             guerrier = new Guerrier(guerrierName, Integer.parseInt(guerrierVie), Integer.parseInt(guerrierForce));
@@ -179,27 +264,23 @@ public class Menu {
 
         if (magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
             magicien = new Magicien();
-        }
-
-        else if (!magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
+        } else if (!magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
             magicien = new Magicien(magicienName);
-        }
-
-        else {
-            if (Integer.parseInt(magicienVie)>6) {
+        } else {
+            if (Integer.parseInt(magicienVie) > 6) {
                 magicienVie = "6";
-            } else if (Integer.parseInt(magicienVie)<3) {
+            } else if (Integer.parseInt(magicienVie) < 3) {
                 magicienVie = "3";
             }
-            if (Integer.parseInt(magicienForce)>15) {
+            if (Integer.parseInt(magicienForce) > 15) {
                 magicienForce = "15";
-            } else if (Integer.parseInt(magicienForce)<8) {
+            } else if (Integer.parseInt(magicienForce) < 8) {
                 magicienForce = "8";
             }
             magicien = new Magicien(magicienName, Integer.parseInt(magicienVie), Integer.parseInt(magicienForce));
         }
 
-       System.out.println(magicien.toString());
+        System.out.println(magicien.toString());
         return magicien;
     }
 }
