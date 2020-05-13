@@ -39,7 +39,8 @@ public class Menu {
                     System.out.println("Tu as choisi le Guerrier.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Guerrier !");
-                    playerPerso = this.createYourHeros(playerChoice);
+                    //playerPerso = this.createYourHeros(playerChoice);
+                    playerPerso = this.createYourWarrior();
                 }
                 case "Magicien" -> {
                     System.out.println("Tu as choisi le Magicien.");
@@ -78,82 +79,58 @@ public class Menu {
 
     public Guerrier createYourWarrior() {
 
-        Guerrier guerrier = new Guerrier();
+        Guerrier guerrier;
 
-        /*
-         * choisir un nom pour le nouveau Guerrier :: j'ai mis un boolean pour les vérifs regex plus tard....
-         */
-        boolean okName = false;
+        // Input nom, vie et force du player
 
-        while (!okName) {
+        //Instancie un nouveau scanner
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("\nChoisis un nom pour ton Guerrier : ");
-
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            String guerrierName = scanner.nextLine();
-
-
-            switch (guerrierName) {
-                case "Echap" -> {
-                    System.out.println("Tu as quitté le jeu ! A bientôt :)");
-                    okName = true;
-                }
-                case "" -> {
-                    guerrier.setNom("Inconnu");
-                    okName = true;
-                }
-                default -> {
-                    guerrier.setNom(guerrierName);
-                    okName = true;
-                }
-            }
+        System.out.println("\nChoisis un nom pour ton Guerrier : ");
+        //nouvelle variable nom du magicien input
+        String guerrierName = scanner.nextLine();
+        if (guerrierName.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
         }
 
-        /*
-         * choisir les points de vie du nouveau guerrier
-         */
-        boolean okVie = false;
-
-        System.out.println("\nChoisis maintenant ses points de vie (entre 5 et 10) : ");
-
-        while (!okVie) {
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            int guerrierVie = scanner.nextInt();
-
-
-            if (guerrierVie >= 5 && guerrierVie <= 10) {
-                guerrier.setVie(guerrierVie);
-                okVie = true;
-            } else {
-                System.out.println("Merci d'entrer des points de vie entre 5 et 10 :");
-            }
-
+        System.out.println("\nChoisis une force de vie pour ton Magicien (entre 5 et 10) : ");
+        String guerrierVie = scanner.nextLine();
+        if (guerrierVie.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
         }
 
-        /*
-         * choisir la force du nouveau guerrier
-         */
-        boolean okForce = false;
+        System.out.println("\nChoisis une force d'attaque pour ton Magicien (entre 5 et 10) : ");
+        String guerrierForce = scanner.nextLine();
+        if (guerrierForce.equals("Q")) {
+            System.out.println("A bientôt :)");
+            System.exit(0);
+        }
 
-        System.out.println("\nPour finir choisis sa force (entre 5 et 10) : ");
 
-        while (!okForce) {
-            //Instancie un nouveau scanner
-            Scanner scanner = new Scanner(System.in);
-            //nouvelle variable nom du guerrier input
-            int guerrierForce = scanner.nextInt();
+        //Vérif des inputs et construction d'un Magicien en fonction des input
 
-            if (guerrierForce >= 5 && guerrierForce <= 10) {
-                guerrier.setForce(guerrierForce);
-                okForce = true;
-            } else {
-                System.out.println("Merci d'entrer une force entre 5 et 10 :");
+        if (guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
+            guerrier = new Guerrier();
+        }
+
+        else if (!guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
+            guerrier = new Guerrier(guerrierName);
+        }
+
+        else {
+            if (Integer.parseInt(guerrierVie)>10) {
+                guerrierVie = "10";
+            } else if (Integer.parseInt(guerrierVie)<5) {
+                guerrierVie = "5";
             }
-
+            if (Integer.parseInt(guerrierForce)>10) {
+                guerrierForce = "10";
+            } else if (Integer.parseInt(guerrierForce)<5) {
+                guerrierForce = "5";
+            }
+            guerrier = new Guerrier(guerrierName, Integer.parseInt(guerrierVie), Integer.parseInt(guerrierForce));
         }
 
         System.out.println(guerrier.toString());
@@ -171,8 +148,6 @@ public class Menu {
         Magicien magicien;
 
         // Input nom, vie et force du player
-
-        System.out.println("Tu vas créer ton Magicien.");
 
         //Instancie un nouveau scanner
         Scanner scanner = new Scanner(System.in);
@@ -211,6 +186,16 @@ public class Menu {
         }
 
         else {
+            if (Integer.parseInt(magicienVie)>6) {
+                magicienVie = "6";
+            } else if (Integer.parseInt(magicienVie)<3) {
+                magicienVie = "3";
+            }
+            if (Integer.parseInt(magicienForce)>15) {
+                magicienForce = "15";
+            } else if (Integer.parseInt(magicienForce)<8) {
+                magicienForce = "8";
+            }
             magicien = new Magicien(magicienName, Integer.parseInt(magicienVie), Integer.parseInt(magicienForce));
         }
 
