@@ -30,28 +30,27 @@ public class Magicien extends Heros {
 
     //toString -> retourne nom, image, vie et force.
 
+    @Override
     public String toString() {
-        return
-                "Nom du magicien : " + this.nom
-                        + "\nPoints de vie : " + this.vie
-                        + "\nForce d'attaque : " + this.force;
+        return "--> Magicien\n" + super.toString();
+
     }
 
 
     //************** GETTERS  ******************
 
 
-    public String getNom() {
-        return nom;
-    }
-
-    public int getVie() {
-        return vie;
-    }
-
-    public int getForce() {
-        return force;
-    }
+//    public String getNom() {
+//        return nom;
+//    }
+//
+//    public int getVie() {
+//        return vie;
+//    }
+//
+//    public int getForce() {
+//        return force;
+//    }
 
 
     //**********************   SETTERS  ***********************
@@ -59,29 +58,29 @@ public class Magicien extends Heros {
 
     public void setNom(String nom) {
         if (!nom.equals("")) {
-            this.nom = nom;
+            super.nom = nom;
         } else {
-            this.nom = "Harry";
+            super.nom = "Harry";
         }
     }
 
     public void setVie(int vie) {
         if (vie >= 3 && vie <= 6) {
-            this.vie = vie;
+            super.vie = vie;
         } else if (vie > 6) {
-            this.vie = 6;
+            super.vie = 6;
         } else {
-            this.vie = 3;
+            super.vie = 3;
         }
     }
 
     public void setForce(int force) {
         if (force >= 8 && force <= 15) {
-            this.force = force;
+            super.force = force;
         } else if (force > 15) {
-            this.force = 15;
+            super.force = 15;
         } else {
-            this.force = 8;
+            super.force = 8;
         }
     }
 

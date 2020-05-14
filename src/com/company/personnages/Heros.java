@@ -1,6 +1,8 @@
 package com.company.personnages;
 
-public class Heros {
+import com.company.armes.Arme;
+
+public abstract class Heros {
 
     //*****************  ATTRIBUTS  *****************************
 
@@ -9,9 +11,10 @@ public class Heros {
     protected int force;
     protected String attaque;
     protected String defense;
+    //protected int position;
 
 
-    //*********************** CONSTRUCTEUR  **********************
+    //*********************** CONSTRUCTEURS  **********************
 
     public Heros() {
         nom = "Inconnu";
@@ -19,15 +22,17 @@ public class Heros {
         force = 5;
         attaque = "??";
         defense = "??";
+        //position = 1;
 
     }
 
-    public Heros(String pickNom){
+    public Heros(String pickNom) {
         nom = pickNom;
         vie = 3;
         force = 5;
         attaque = "??";
         defense = "??";
+        //position = 1;
     }
 
     public Heros(String pickNom, int pickVie, int pickForce, String pickAttaque, String pickDefense) {
@@ -36,6 +41,17 @@ public class Heros {
         force = pickForce;
         attaque = pickAttaque;
         defense = pickDefense;
+        //position = 1;
+    }
+
+    //*************  METHODS  ********************
+
+    @Override
+    public String toString() {
+        return  "Nom du Héros : " + this.nom
+                + "\nPoints de vie : " + this.vie
+                + "\nForce d'attaque : " + this.force
+                /*+ "\nPosition sur le plateau : case n° " + this.position*/;
     }
 
     //************  GETTERS  ******************
@@ -61,6 +77,10 @@ public class Heros {
         return defense;
     }
 
+//    public int getPosition() {
+//        return position;
+//    }
+
     //******************   SETTERS  ***********************
 
 
@@ -84,4 +104,7 @@ public class Heros {
         this.defense = defense;
     }
 
+//    public void setPosition(int position) {
+//        this.position = position;
+//    }
 }

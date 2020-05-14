@@ -21,7 +21,7 @@ public class Menu {
         boolean isReady = false;
         //petite Phrase d'entrée de jeu : "choisis ton perso
         System.out.println("\nChoisis ton perso (Guerrier / Magicien) : ");
-        Heros playerPerso = new Heros();
+        Heros playerPerso = null;
 
 
         //Tant qu'on n'est pas prêt :
@@ -49,9 +49,10 @@ public class Menu {
                     playerPerso = this.createYourHeros(playerChoice);
                     //playerPerso = this.createYourWizard();
                 }
-                case "Echap" -> {
+                case "q" -> {
                     System.out.println("Tu as quitté le jeu ! A bientôt.");
-                    isReady = true;
+//                    isReady = true;
+                    System.exit(0);
                 }
                 default -> System.out.println("Choisis entre Guerrier et Magicien stp :)");
             }
@@ -62,15 +63,22 @@ public class Menu {
         Play play = new Play();
         play.playGame();
 
+
         return playerPerso;
 
     }
 
 
+    //*******************************************************************************
+    //******************* CREATE YOUR HEROS *******************************************
+    //*************************************************************************************
+
     public Heros createYourHeros(String type) {
         Heros yourHeros;
 
+        //*************************************************************************
         //Saisir l'input du player pour construire son Heros
+        //**********************************************************************************
         Scanner scanner = new Scanner(System.in);
 
 
@@ -112,7 +120,9 @@ public class Menu {
         }
 
 
+        //**************************************************************************************
         //Vérif des inputs et construction d'un Her Magicien en fonction des input
+        //****************************************************************************************
 
         if (herosName.equals("") && herosVie.equals("") && herosForce.equals("")) {
             if (type.equals("Guerrier")) {
@@ -160,10 +170,9 @@ public class Menu {
         return yourHeros;
     }
 
-    /*
-     *
-     * @return un nouveau Guerrier
-     */
+    //**********************************************************************************
+    //************* CREATE WARRIOR *******************************
+    //**********************************************************************
 
 
     public Guerrier createYourWarrior() {
@@ -223,10 +232,9 @@ public class Menu {
     }
 
 
-    /*
-     *
-     ****@return un nouveau Magicien
-     */
+    //******************************************************************************************
+    //*********************  CREATE MAGICIEN  ************************************
+    //**************************************************************************************
 
     public Magicien createYourWizard() {
 
