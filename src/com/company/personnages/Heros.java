@@ -16,19 +16,21 @@ public abstract class Heros {
     //*********************** CONSTRUCTEURS  **********************
 
     public Heros() {
-        nom = "Inconnu";
-        vie = 3;
-        force = 5;
-        attaque = "??";
-        defense = "??";
+//        nom = "Inconnu";
+//        vie = 3;
+//        force = 5;
+//        attaque = "??";
+//        defense = "??";
+        this("Inconnu");
     }
 
     public Heros(String pickNom) {
-        nom = pickNom;
-        vie = 3;
-        force = 5;
-        attaque = "??";
-        defense = "??";
+//        nom = pickNom;
+//        vie = 3;
+//        force = 5;
+//        attaque = "??";
+//        defense = "??";
+        this(pickNom, 3, 5, "??", "??");
     }
 
     public Heros(String pickNom, int pickVie, int pickForce, String pickAttaque, String pickDefense) {

@@ -38,6 +38,7 @@ public class Play {
             try {
                 playerCase = this.move(newDice);
             } catch (PersonnageHorsPlateauException e) {
+                playerCase = nbCase;
                 System.out.println(e.getMessage());
             }
 

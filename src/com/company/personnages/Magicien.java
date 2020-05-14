@@ -12,12 +12,14 @@ public class Magicien extends Heros {
     //**************    CONSTRUCTEURS   *******************************
 
     public Magicien() {
-        super("Inconnu", 3, 8, "??", "??");
+        //super("Inconnu", 3, 8, "??", "??");
+        this("Inconnu");
 
     }
 
     public Magicien(String pickNom) {
-        super(pickNom, 3, 8, "??", "??");
+        //super(pickNom, 3, 8, "??", "??");
+        this(pickNom,3,8);
 
     }
 

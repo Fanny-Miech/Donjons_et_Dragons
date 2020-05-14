@@ -18,7 +18,7 @@ public class Menu {
     public void welcome() {
         System.out.println("\n\tBienvenue sur le plateau de Donjon et Dragons !!!");
         System.out.println("\nPrêt à en découdre ?");
-        System.out.println("NB : tu peux quitter le jeu à tout moment en tapant 'Echap'.");
+        System.out.println("\nNB : tu peux quitter le jeu à tout moment en tapant 'q'.");
     }
 
 
@@ -178,7 +178,7 @@ public class Menu {
                 } else if (Integer.parseInt(herosForce) < 8) {
                     herosForce = "8";
                 }
-                yourHeros = new Guerrier(herosName, Integer.parseInt(herosVie), Integer.parseInt(herosForce));
+                yourHeros = new Magicien(herosName, Integer.parseInt(herosVie), Integer.parseInt(herosForce));
             }
 
         }
@@ -205,23 +205,32 @@ public class Menu {
         String newVie = scanner.nextLine();
         this.toQuit(newVie);
         if (!newVie.equals("")) {
-            heros.setNom(newVie);
+            heros.setVie(Integer.parseInt(newVie));
         }
 
         System.out.println("Force actuelle : " + heros.getForce() + " //Nouvelle force : ");
         String newForce = scanner.nextLine();
         this.toQuit(newForce);
         if (!newForce.equals("")) {
-            heros.setNom(newForce);
+            heros.setForce(Integer.parseInt(newForce));
         }
 
         System.out.println(heros.toString());
         return heros;
     }
 
+
+
+    //******************************************************************************************************************
+    //
+    //*********************************  OBSOLLETE  ********************************************************************
+    //
+    //******************************************************************************************************************
+
+
     //**********************************************************************************
-    //************* CREATE WARRIOR *******************************
-    //**********************************************************************
+    //************* CREATE WARRIOR *****************************************************
+    //**********************************************************************************
 
 
     public Guerrier createYourWarrior() {
