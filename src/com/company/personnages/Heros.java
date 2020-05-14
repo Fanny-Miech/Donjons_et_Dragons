@@ -11,7 +11,6 @@ public abstract class Heros {
     protected int force;
     protected String attaque;
     protected String defense;
-    //protected int position;
 
 
     //*********************** CONSTRUCTEURS  **********************
@@ -22,8 +21,6 @@ public abstract class Heros {
         force = 5;
         attaque = "??";
         defense = "??";
-        //position = 1;
-
     }
 
     public Heros(String pickNom) {
@@ -32,7 +29,6 @@ public abstract class Heros {
         force = 5;
         attaque = "??";
         defense = "??";
-        //position = 1;
     }
 
     public Heros(String pickNom, int pickVie, int pickForce, String pickAttaque, String pickDefense) {
@@ -41,7 +37,6 @@ public abstract class Heros {
         force = pickForce;
         attaque = pickAttaque;
         defense = pickDefense;
-        //position = 1;
     }
 
     //*************  METHODS  ********************
@@ -50,8 +45,7 @@ public abstract class Heros {
     public String toString() {
         return  "Nom du Héros : " + this.nom
                 + "\nPoints de vie : " + this.vie
-                + "\nForce d'attaque : " + this.force
-                /*+ "\nPosition sur le plateau : case n° " + this.position*/;
+                + "\nForce d'attaque : " + this.force;
     }
 
     //************  GETTERS  ******************
@@ -77,9 +71,6 @@ public abstract class Heros {
         return defense;
     }
 
-//    public int getPosition() {
-//        return position;
-//    }
 
     //******************   SETTERS  ***********************
 
@@ -104,7 +95,4 @@ public abstract class Heros {
         this.defense = defense;
     }
 
-//    public void setPosition(int position) {
-//        this.position = position;
-//    }
 }

@@ -12,7 +12,7 @@ public class Guerrier extends Heros {
     //**************    CONSTRUCTEURS   *******************************
 
     public Guerrier() {
-            super("Inconnu", 3, 8, "??", "??");
+            super("Inconnu", 5, 5, "??", "??");
 
         }
 
