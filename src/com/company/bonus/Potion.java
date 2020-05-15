@@ -1,4 +1,6 @@
 package com.company.bonus;
 
-public class Potion {
+import com.company.contrats.Bonus;
+
+public class Potion extends Bonus {
 }

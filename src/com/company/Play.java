@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.personnages.Heros;
 import com.company.personnages.PersonnageHorsPlateauException;
 
 import java.lang.Math;
@@ -14,7 +15,7 @@ public class Play {
 
 
     //**********************************************************************
-    //****************  JET DE DES  *************************************
+    //                JET DE DES
     //********************************************************************
 
     public int dice() {
@@ -22,13 +23,20 @@ public class Play {
         return dice;
     }
 
-    //**********************************************************************************
-    //*****************  PLAYGAME  **********************************************
+    //****************************************************************************
+    //                PLAYGAME
     //*****************************************************************************
 
 
-    public void playGame() {
+    public void playGame(Heros perso) {
+
+        PlateauDeJeu plateau = new PlateauDeJeu();
+        plateau.toString();
+
+
+
         while (playerCase < nbCase) {
+
             Scanner sc = new Scanner(System.in);
             sc.nextLine();
 
@@ -53,7 +61,7 @@ public class Play {
 
 
     //**********************************************************************************
-    //*********************  MOVE  *****************************************************
+    //                     MOVE
     //********************************************************************************
 
 
@@ -65,3 +73,6 @@ public class Play {
         }
     }
 }
+
+
+/// Event event = new Event();

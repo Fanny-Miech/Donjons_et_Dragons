@@ -12,12 +12,14 @@ public class Guerrier extends Heros {
     //**************    CONSTRUCTEURS   *******************************
 
     public Guerrier() {
-            super("Inconnu", 5, 5, "??", "??");
+            //super("Inconnu", 5, 5, "??", "??");
+        this("Inconnu");
 
         }
 
     public Guerrier(String pickNom) {
-            super(pickNom, 5, 5, "??", "??");
+            //super(pickNom, 5, 5, "??", "??");
+        this(pickNom, 5, 5);
 
         }
 

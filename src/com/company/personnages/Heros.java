@@ -1,6 +1,5 @@
 package com.company.personnages;
 
-import com.company.armes.Arme;
 
 public abstract class Heros {
 

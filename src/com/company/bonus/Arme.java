@@ -1,4 +1,6 @@
 package com.company.bonus;
 
-public class Arme {
+import com.company.contrats.Bonus;
+
+public class Arme extends Bonus {
 }
