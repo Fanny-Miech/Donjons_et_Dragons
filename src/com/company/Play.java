@@ -1,10 +1,12 @@
 package com.company;
 
+import com.company.contrats.Event;
 import com.company.personnages.Heros;
 import com.company.personnages.PersonnageHorsPlateauException;
 
 import java.lang.Math;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Play {
@@ -30,8 +32,9 @@ public class Play {
 
     public void playGame(Heros perso) {
 
-        PlateauDeJeu plateau = new PlateauDeJeu();
-        plateau.toString();
+        PlateauDeJeu plateauDeJeu = new PlateauDeJeu(nbCase);
+        ArrayList<Event> plateau = plateauDeJeu.getPlateau();
+        //plateau.toString();
 
 
 
@@ -51,6 +54,9 @@ public class Play {
             }
 
             System.out.println("Tour n° : " + lap + "\nTon perso se trouve sur la case " + playerCase + "/64.");
+
+            plateau.get(playerCase).interact(perso);
+
             lap++;
         }
 

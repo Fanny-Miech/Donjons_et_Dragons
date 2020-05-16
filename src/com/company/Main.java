@@ -22,12 +22,14 @@ public class Main {
 
         Heros heros = new Magicien();
 
-        ArrayList<Event> plateau = new ArrayList<Event>();
-        plateau = new ArrayList<Event>();
-        plateau.add(new EventEmpty());
-        plateau.add(new Ennemi());
-        plateau.add(new Bonus());
+//        ArrayList<Event> plateau = new ArrayList<Event>();
+//        plateau = new ArrayList<Event>();
+//        plateau.add(new EventEmpty());
+//        plateau.add(new Ennemi());
+//        plateau.add(new Bonus());
 
+        PlateauDeJeu plateauDeJeu = new PlateauDeJeu(64);
+        ArrayList<Event> plateau = plateauDeJeu.getPlateau();
 
         for (
                 int i = 0; i < plateau.size(); i++) {
