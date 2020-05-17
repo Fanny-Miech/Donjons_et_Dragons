@@ -47,7 +47,7 @@ public class Play {
 
                 playerCase = this.move(newDice);
 
-                System.out.println("Tour n° : " + lap + "\nTon perso se trouve sur la case " + playerCase + "/64.");
+                System.out.println("Tour n° : " + lap + "\n" + perso.getNom() + " se trouve sur la case " + playerCase + "/64.");
 
                 plateau.get(playerCase).interact(perso);
 

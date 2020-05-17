@@ -58,16 +58,16 @@ public class Menu {
             //Vérif des inputs
             switch (playerChoice) {
                 case "Guerrier" -> {
-                    System.out.println("\tTu as choisi le Guerrier.");
+                    System.out.println("------> Tu as choisi le Guerrier.");
                     isReady = true;
-                    System.out.println("\nTu peux maintenant créer ton Guerrier !");
+                    System.out.println("\n-------------------------------------\nTu peux maintenant créer ton Guerrier !");
                     playerPerso = this.createYourHeros(scanner, playerChoice);
                     //playerPerso = this.createYourWarrior();
                 }
                 case "Magicien" -> {
-                    System.out.println("\tTu as choisi le Magicien.");
+                    System.out.println("------> Tu as choisi le Magicien.");
                     isReady = true;
-                    System.out.println("\nTu peux maintenant créer ton Magicien !");
+                    System.out.println("\n--------------------------------------\nTu peux maintenant créer ton Magicien !");
                     playerPerso = this.createYourHeros(scanner, playerChoice);
                     //playerPerso = this.createYourWizard();
                 }
@@ -117,7 +117,7 @@ public class Menu {
         //--------------------------------------------------------------------------------
 
         //récupère input name
-        System.out.println("\nChoisis un nom pour ton " + type + " : ");
+        System.out.print("\nChoisis un nom pour ton " + type + " : ");
         String herosName = scanner.nextLine();
         this.toQuit(herosName);
 
@@ -129,7 +129,7 @@ public class Menu {
         } else {
             vie = "(entre 3 et 6)";
         }
-        System.out.println("Choisis une force de vie pour ton " + type + " " + vie + " : ");
+        System.out.print("Choisis une force de vie pour ton " + type + " " + vie + " : ");
         String herosVie = scanner.nextLine();
         this.toQuit(herosVie);
 
@@ -140,7 +140,7 @@ public class Menu {
         } else {
             force = "(entre 8 et 15)";
         }
-        System.out.println("Choisis une force d'attaque pour ton " + type + " " + force + " : ");
+        System.out.print("Choisis une force d'attaque pour ton " + type + " " + force + " : ");
         String herosForce = scanner.nextLine();
         this.toQuit(herosForce);
 
@@ -191,7 +191,7 @@ public class Menu {
 
         }
 
-        System.out.println(yourHeros.toString());
+        System.out.println("\nVoilà ton Héros : " + yourHeros.toString());
         return yourHeros;
     }
 

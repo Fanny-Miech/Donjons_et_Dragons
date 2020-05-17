@@ -1,16 +1,16 @@
 package com.company;
 
-import com.company.bonus.attack.sorts.BouleDeFeu;
-import com.company.bonus.attack.sorts.Eclair;
-import com.company.bonus.attack.armes.Epee;
-import com.company.bonus.attack.armes.Massue;
-import com.company.bonus.potions.Big;
-import com.company.bonus.potions.Standard;
+import com.company.events.bonus.attack.sorts.BouleDeFeu;
+import com.company.events.bonus.attack.sorts.Eclair;
+import com.company.events.bonus.attack.armes.Epee;
+import com.company.events.bonus.attack.armes.Massue;
+import com.company.events.bonus.potions.Big;
+import com.company.events.bonus.potions.Standard;
 import com.company.contrats.Event;
-import com.company.contrats.EventEmpty;
-import com.company.ennemis.Dragon;
-import com.company.ennemis.Gobelin;
-import com.company.ennemis.Sorcier;
+import com.company.events.EventEmpty;
+import com.company.events.ennemis.Dragon;
+import com.company.events.ennemis.Gobelin;
+import com.company.events.ennemis.Sorcier;
 
 import java.util.ArrayList;
 
