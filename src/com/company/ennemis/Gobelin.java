@@ -1,6 +1,7 @@
 package com.company.ennemis;
 
-import com.company.contrats.Ennemi;
-
 public class Gobelin extends Ennemi {
+    public Gobelin() {
+        super(6,1);
+    }
 }
