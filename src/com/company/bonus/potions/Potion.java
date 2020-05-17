@@ -25,7 +25,7 @@ public abstract class Potion extends Bonus {
         h.setVie(h.getVie() + this.vie);
 
         System.out.println("Bonne surprise : voilà une " + this.name + " qui te fait gagner " + this.vie + " points de vie ! ");
-        System.out.println("\n Ancien niveau de vie : " + vie +  " // Nouveau niveau de vie : " + h.getVie() );       ;
+        System.out.println("\n Ancien niveau de vie : " + vie +  " / Nouveau niveau de vie : " + h.getVie() );
     }
 
     @Override

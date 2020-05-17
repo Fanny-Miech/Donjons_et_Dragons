@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    Scanner scanner = new Scanner(System.in);
 
     //*********************************************************************
     //                      WELCOME
@@ -15,7 +14,9 @@ public class Menu {
 
 
     public void welcome() {
-        System.out.println("\n\tBienvenue sur le plateau de Donjon et Dragons !!!");
+        System.out.println("\n---------------------------------------------------------------------" +
+                "\n\tBienvenue sur le plateau de Donjon et Dragons !!!" +
+                "\n---------------------------------------------------------------------");
         System.out.println("\nPrêt à en découdre ?");
         System.out.println("\nNB : tu peux quitter le jeu à tout moment en tapant 'q'.");
     }
@@ -37,15 +38,13 @@ public class Menu {
     //*************************************************************************************
 
 
-    public Heros chooseYourPerso() {
+    public Heros chooseYourPerso(Scanner scanner) {
 
         boolean isReady = false;
         //petite Phrase d'entrée de jeu : "choisis ton perso
-        System.out.println("\nChoisis ton perso (Guerrier / Magicien) : ");
+        System.out.print("\nChoisis ton perso (Guerrier / Magicien) : ");
         Heros playerPerso = null;
 
-        //Instancie un nouveau scanner
-        Scanner scanner = new Scanner(System.in);
 
         //Tant qu'on n'est pas prêt :
         while (!isReady) {
@@ -59,17 +58,17 @@ public class Menu {
             //Vérif des inputs
             switch (playerChoice) {
                 case "Guerrier" -> {
-                    System.out.println("Tu as choisi le Guerrier.");
+                    System.out.println("\tTu as choisi le Guerrier.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Guerrier !");
-                    playerPerso = this.createYourHeros(playerChoice);
+                    playerPerso = this.createYourHeros(scanner, playerChoice);
                     //playerPerso = this.createYourWarrior();
                 }
                 case "Magicien" -> {
-                    System.out.println("Tu as choisi le Magicien.");
+                    System.out.println("\tTu as choisi le Magicien.");
                     isReady = true;
                     System.out.println("\nTu peux maintenant créer ton Magicien !");
-                    playerPerso = this.createYourHeros(playerChoice);
+                    playerPerso = this.createYourHeros(scanner, playerChoice);
                     //playerPerso = this.createYourWizard();
                 }
                 default -> System.out.println("Choisis entre Guerrier et Magicien stp :)");
@@ -77,11 +76,11 @@ public class Menu {
 
         }
 
-        System.out.println("Veux-tu modifier ton perso ? (o/n) ");
+        System.out.println("-----------------------------------------\nVeux-tu modifier ton perso ? (o/n) ");
         String modif = scanner.nextLine();
         this.toQuit(modif);
         if (modif.equals("o")) {
-            playerPerso = modifHeros(playerPerso);
+            playerPerso = modifHeros(scanner, playerPerso);
         }
 
         return playerPerso;
@@ -93,11 +92,11 @@ public class Menu {
     //**********************************************************
 
     public void readyToPlay(Heros perso) {
-        System.out.println("On lance le jeu ? (o/n)");
+        System.out.println("\n-------------------------------------------\nOn lance le jeu ? (o/n)");
         Scanner scanner = new Scanner(System.in);
         String play = scanner.nextLine();
         this.toQuit(play);
-        if (play.equals("o")) {
+        if (play.equals("o") || play.equals("")) {
             Play play1 = new Play();
             play1.playGame(perso);
         } else {
@@ -110,7 +109,7 @@ public class Menu {
     //               CREATE YOUR HEROS
     //*************************************************************************************
 
-    public Heros createYourHeros(String type) {
+    public Heros createYourHeros(Scanner scanner, String type) {
         Heros yourHeros;
 
         //--------------------------------------------------------------------------------
@@ -130,7 +129,7 @@ public class Menu {
         } else {
             vie = "(entre 3 et 6)";
         }
-        System.out.println("\nChoisis une force de vie pour ton " + type + " " + vie + " : ");
+        System.out.println("Choisis une force de vie pour ton " + type + " " + vie + " : ");
         String herosVie = scanner.nextLine();
         this.toQuit(herosVie);
 
@@ -141,7 +140,7 @@ public class Menu {
         } else {
             force = "(entre 8 et 15)";
         }
-        System.out.println("\nChoisis une force d'attaque pour ton " + type + " " + force + " : ");
+        System.out.println("Choisis une force d'attaque pour ton " + type + " " + force + " : ");
         String herosForce = scanner.nextLine();
         this.toQuit(herosForce);
 
@@ -201,7 +200,7 @@ public class Menu {
     //*************************************************************************
 
 
-    public Heros modifHeros(Heros heros) {
+    public Heros modifHeros(Scanner scanner, Heros heros) {
 
         System.out.println("Nom actuel : " + heros.getNom() + " //Nouveau nom : ");
         String newName = scanner.nextLine();

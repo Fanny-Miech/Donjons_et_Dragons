@@ -1,8 +1,7 @@
 package com.company;
 
 import com.company.contrats.Event;
-import com.company.personnages.Heros;
-import com.company.personnages.PersonnageHorsPlateauException;
+import com.company.personnages.*;
 
 import java.lang.Math;
 
@@ -21,8 +20,7 @@ public class Play {
     //********************************************************************
 
     public int dice() {
-        int dice = 1 + (int) (Math.random() * 6);
-        return dice;
+        return 1 + (int) (Math.random() * 6);
     }
 
     //****************************************************************************
@@ -34,31 +32,33 @@ public class Play {
 
         PlateauDeJeu plateauDeJeu = new PlateauDeJeu(nbCase);
         ArrayList<Event> plateau = plateauDeJeu.getPlateau();
-        //plateau.toString();
+
+        Scanner sc = new Scanner(System.in);
 
 
+        try {
+            while (playerCase < nbCase) {
 
-        while (playerCase < nbCase) {
 
-            Scanner sc = new Scanner(System.in);
-            sc.nextLine();
+                sc.nextLine();
 
-            int newDice = this.dice();
-            System.out.println("Dé : " + newDice);
+                int newDice = this.dice();
+                System.out.println("Dé : " + newDice);
 
-            try {
                 playerCase = this.move(newDice);
-            } catch (PersonnageHorsPlateauException e) {
-                playerCase = nbCase;
-                System.out.println(e.getMessage());
+
+                System.out.println("Tour n° : " + lap + "\nTon perso se trouve sur la case " + playerCase + "/64.");
+
+                plateau.get(playerCase).interact(perso);
+
+                lap++;
             }
 
-            System.out.println("Tour n° : " + lap + "\nTon perso se trouve sur la case " + playerCase + "/64.");
-
-            plateau.get(playerCase).interact(perso);
-
-            lap++;
+        } catch (PersonnageHorsPlateauException e) {
+            playerCase = nbCase;
+            System.out.println(e.getMessage());
         }
+
 
         System.out.println("\nYou WIN !");
         System.out.println();
@@ -81,4 +81,3 @@ public class Play {
 }
 
 
-/// Event event = new Event();
