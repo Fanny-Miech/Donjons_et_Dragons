@@ -13,6 +13,9 @@ public class Menu {
     //******************************************************************
 
 
+    /**
+     *
+     */
     public void welcome() {
         System.out.println("\n---------------------------------------------------------------------" +
                 "\n\tBienvenue sur le plateau de Donjon et Dragons !!!" +
@@ -26,6 +29,10 @@ public class Menu {
     //                   TO QUIT
     //*****************************************************************
 
+    /**
+     *
+     * @param str
+     */
     public void toQuit(String str) {
         if (str.equals("q")) {
             System.out.println("Tu as quitté le jeu ! A bientôt.");
@@ -38,6 +45,11 @@ public class Menu {
     //*************************************************************************************
 
 
+    /**
+     *
+     * @param scanner
+     * @return
+     */
     public Heros chooseYourPerso(Scanner scanner) {
 
         boolean isReady = false;
@@ -91,6 +103,10 @@ public class Menu {
     //              LANCEMENT DU JEU
     //**********************************************************
 
+    /**
+     *
+     * @param perso
+     */
     public void readyToPlay(Heros perso) {
         System.out.println("\n-------------------------------------------\nOn lance le jeu ? (o/n)");
         Scanner scanner = new Scanner(System.in);
@@ -109,6 +125,12 @@ public class Menu {
     //               CREATE YOUR HEROS
     //*************************************************************************************
 
+    /**
+     *
+     * @param scanner
+     * @param type
+     * @return
+     */
     public Heros createYourHeros(Scanner scanner, String type) {
         Heros yourHeros;
 
@@ -200,6 +222,12 @@ public class Menu {
     //*************************************************************************
 
 
+    /**
+     *
+     * @param scanner
+     * @param heros
+     * @return
+     */
     public Heros modifHeros(Scanner scanner, Heros heros) {
 
         System.out.println("Nom actuel : " + heros.getNom() + " //Nouveau nom : ");

@@ -10,7 +10,8 @@ public abstract class Bonus implements Event {
     //Dans le contrat interface/implements
     @Override
     public void interact(Heros h) {
-        System.out.print("// Caisse surprise --> ");
+        //Réflexivité -> getSuperclass() chercher la class du parent.
+        System.out.print("// Caisse surprise --> " + this.getClass().getSuperclass().getSimpleName());
     }
 
 

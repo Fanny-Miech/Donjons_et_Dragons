@@ -13,20 +13,25 @@ import com.company.events.ennemis.Gobelin;
 import com.company.events.ennemis.Sorcier;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class PlateauDeJeu {
 
     //*************  ATTRIBUTS  ****************************
 
-    int nbCase = 64;
+    int nbCase;
     ArrayList<Event> plateau;
 
-    //*************  CONSTRUCTEUR  **************************
+    //*************  CONSTRUCTEURS  **************************
 
+    /**
+     *
+     */
     public PlateauDeJeu(int nbCase) {
-        this.nbCase = nbCase;
+        this.nbCase = 64;
         this.plateau = new ArrayList<Event>();
-        for (int i=0; i<nbCase ; i++){
+        for (int i=1; i<nbCase+1 ; i++){
 
             Event event;
 
@@ -68,6 +73,27 @@ public class PlateauDeJeu {
 
     }
 
+
+    //******************  METHODS  ***************************************
+
+    public void shuffle(){
+        Collections.shuffle(this.plateau);
+
+    }
+
+    /**
+     *
+     */
+    public void display(ArrayList<Event> plateau) {
+
+        System.out.println("Voici ton nouveau plateau de jeu : ");
+        int i = 1;
+        for (Event event : plateau) {
+            System.out.println("Case " + i + " : " + event.getClass().getSimpleName());
+            i++;
+        }
+    }
+
     //**************** GETTER  ************************************
     public int getNbCase() {
         return nbCase;
@@ -80,6 +106,10 @@ public class PlateauDeJeu {
 
     //*******************  SETTER  **********************************
 
+    /**
+     *
+     * @param plateau
+     */
     public void setPlateau(ArrayList<Event> plateau) {
         this.plateau = plateau;
     }

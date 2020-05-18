@@ -28,10 +28,21 @@ public class Play {
     //*****************************************************************************
 
 
+    /**
+     *
+     * @param perso
+     */
     public void playGame(Heros perso) {
 
         PlateauDeJeu plateauDeJeu = new PlateauDeJeu(nbCase);
         ArrayList<Event> plateau = plateauDeJeu.getPlateau();
+
+        plateauDeJeu.display(plateau);
+
+        plateauDeJeu.shuffle();
+
+        plateauDeJeu.display(plateau);
+
 
         Scanner sc = new Scanner(System.in);
 
@@ -71,6 +82,12 @@ public class Play {
     //********************************************************************************
 
 
+    /**
+     *
+     * @param dice
+     * @return
+     * @throws PersonnageHorsPlateauException
+     */
     public int move(int dice) throws PersonnageHorsPlateauException {
         if (playerCase + dice > nbCase)
             throw new PersonnageHorsPlateauException();

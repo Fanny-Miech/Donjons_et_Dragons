@@ -22,18 +22,18 @@ public abstract class Arme extends Attack {
     @Override
     public void interact(Heros h) {
         super.interact(h);
-        System.out.println("Arme");
+        //System.out.println("Arme");
 
         if (h instanceof Guerrier) {
             int force = h.getForce();
             h.setForce(force + this.force);
 
-            System.out.println("Voilà une " + this.name + " pour " + h.getNom() +
+            System.out.println("\nVoilà une " + this.name + " pour toi " + h.getNom() +
                     ". Elle augmente ta force de frappe de " + this.force + " points."
                     + "\nForce actuelle : " + force + " | Nouvelle force : " + h.getForce());
 
         } else if (h instanceof Magicien) {
-            System.out.println("Désolé mais pas d'arme pour les Magiciens");
+            System.out.println("\nDésolé mais pas d'arme pour les Magiciens");
         }
     }
 }

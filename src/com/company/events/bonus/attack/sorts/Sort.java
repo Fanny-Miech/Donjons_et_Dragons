@@ -21,18 +21,18 @@ public abstract class Sort extends Attack {
     @Override
     public void interact(Heros h) {
         super.interact(h);
-        System.out.println("Sort");
+        //System.out.println("Sort");
 
         if (h instanceof Magicien) {
             int force = h.getForce();
             h.setForce(force + this.force);
 
-            System.out.println("Voilà un sort " + this.name + " pour " + h.getNom() +
+            System.out.println("\nVoilà un sort " + this.name + " pour toi " + h.getNom() +
                     ". Il augmente ta force de frappe de " + this.force + " points."
                     + "\nForce actuelle : " + force + " | Nouvelle force : " + h.getForce());
 
         } else if (h instanceof Guerrier) {
-            System.out.println("Désolé mais pas de sort pour les Guerriers");
+            System.out.println("\nDésolé mais pas de sort pour les Guerriers");
         }
     }
 }

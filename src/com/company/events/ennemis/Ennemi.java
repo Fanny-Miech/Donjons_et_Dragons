@@ -26,7 +26,7 @@ public abstract class Ennemi implements Event {
     //La méthode interact() fait partie du contrat entre interface et implements.
     @Override
     public void interact(Heros h) {
-        System.out.println("// Ennemi --> ");
+        System.out.println("// Ennemi --> " + this.getClass().getSimpleName() + " | Attaque : " + this.getAttaque());
     }
 
     //*************** GETTER  ***********************
