@@ -14,29 +14,43 @@ public class Guerrier extends Heros {
 
     //**************    CONSTRUCTEURS   *******************************
 
+    /**
+     * constructeur vide
+     */
     public Guerrier() {
-            //super("Inconnu", 5, 5, "??", "??");
+        //super("Inconnu", 5, 5, "??", "??");
         this("Inconnu");
 
-        }
+    }
 
+    /**
+     * constructeur avec nom
+     *
+     * @param pickNom String
+     */
     public Guerrier(String pickNom) {
-            //super(pickNom, 5, 5, "??", "??");
+        //super(pickNom, 5, 5, "??", "??");
         this(pickNom, 5, 5);
 
-        }
+    }
 
+    /**
+     * constructeur avec tous les parametres
+     *
+     * @param pickNom   String
+     * @param pickVie   int
+     * @param pickForce int
+     */
     public Guerrier(String pickNom, int pickVie, int pickForce) {
-            super(pickNom, pickVie, pickForce, "??", "??");
+        super(pickNom, pickVie, pickForce, "??", "??");
 
-        }
+    }
 
     //*****************   METHODES **********************
 
     //toString -> retourne nom, image, vie et force.
 
     /**
-     *
      * @return string ajoute la classe du heros a la methode super.toString()
      */
     @Override
@@ -46,28 +60,9 @@ public class Guerrier extends Heros {
     }
 
 
-    //***********    ACCESSEURS     (Getters)  ************************
-
-//    //Retourne le nom du guerrier
-//    public String getNom() {
-//        return nom;
-//    }
-//
-//    //Retourne la vie du guerrier
-//    public int getVie() {
-//        return vie;
-//    }
-//
-//    //Retourne la force du guerrier
-//    public int getForce() {
-//        return force;
-//    }
-
-
     //*********************   MUTATEURS   (setters)  ****************************
 
     /**
-     *
      * @param nom String
      */
     public void setNom(String nom) {
@@ -81,6 +76,7 @@ public class Guerrier extends Heros {
 
     /**
      * verifie si la vie est bien comprise entre 5 et 10 sinon vie = vieMin ou vieMax
+     *
      * @param vie int
      */
     public void setVie(int vie) {
@@ -95,6 +91,7 @@ public class Guerrier extends Heros {
 
     /**
      * verifie si la force est bien comprise entre 5 et 10 sinon force = forceMin ou forceMax
+     *
      * @param force int
      */
     public void setForce(int force) {

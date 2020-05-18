@@ -17,7 +17,7 @@ public class Menu {
 
 
     /**
-     *Cette methode accueille le joueur sur le plateau de Donjon et Dragons
+     * Cette methode accueille le joueur sur le plateau de Donjon et Dragons
      */
     public void welcome() {
         System.out.println("\n---------------------------------------------------------------------" +
@@ -33,7 +33,8 @@ public class Menu {
     //*****************************************************************
 
     /**
-     *Cette Methode arrete l'execution du code
+     * Cette Methode arrete l'execution du code
+     *
      * @param str String
      */
     public void toQuit(String str) {
@@ -49,8 +50,9 @@ public class Menu {
 
 
     /**
-     *Cette methode demande au joueur de choisir son Heros : Guerrier ou Magicien
+     * Cette methode demande au joueur de choisir son Heros : Guerrier ou Magicien
      * Le joueur peut quitter le jeu à tout moment en tapant 'q'
+     *
      * @param scanner Scanner
      * @return heros Heros
      */
@@ -58,14 +60,14 @@ public class Menu {
 
         /**
          * isReady est un boolean qui conditionne la boucle while suivante.
-         * tant que le joueur n'a pas entré "Magicien" ou "Guerrier" ou 'q' on ressoumet la requête
+         * tant que le joueur n'a pas entre "Magicien" ou "Guerrier" ou 'q' on ressoumet la requete d'input
          */
         boolean isReady = false;
         //petite Phrase d'entrée de jeu : "choisis ton perso
         System.out.print("\nChoisis ton perso (Guerrier / Magicien) : ");
 
         /**
-         * playerPerso est un Herso null -> Heros = class abstraite
+         * playerPerso est un Herso null - Heros = class abstraite
          */
         Heros playerPerso = null;
 
@@ -116,8 +118,9 @@ public class Menu {
     //**********************************************************
 
     /**
-     *Cette methode demande au joueur de lancer le jeu
-     * S'il tape 'o' ou '' le jeu commence -> Play play = new Play()
+     * Cette methode demande au joueur de lancer le jeu
+     * S'il tape 'o' ou '' le jeu commence - Play play = new Play()
+     *
      * @param perso Heros
      */
     public void readyToPlay(Heros perso) {
@@ -139,13 +142,14 @@ public class Menu {
     //*************************************************************************************
 
     /**
-     *Cette methode permet de creer un nouveau personnage Guerrier ou Magicien selon le choix fait precedemment
+     * Cette methode permet de creer un nouveau personnage Guerrier ou Magicien selon le choix fait precedemment
      * Elle demande au joueur d'entrer un nom, des points de vie et une force d'attaque
      * Selon les input du joueur differents constructeurs seront appeles
      * Les input seront aussi testes pour correspondre aux exigences des attributs de chaque personnage
      * Le joueur peut quitter le programme à tout moment en tapant 'q'
+     *
      * @param scanner Scanner
-     * @param type String -> le nom du Heros choisi par le joueur
+     * @param type    String - le nom du Heros choisi par le joueur
      * @return yourHeros = new Magicien ou new Guerrier
      */
     public Heros createYourHeros(Scanner scanner, String type) {
@@ -240,11 +244,12 @@ public class Menu {
 
 
     /**
-     *Cette methode fait appel aux getter et setter de la classe Heros pour modifier les attributs du Heros du joueur
-     * Le joueur peut quitter le jeu à tout moment en entrant 'q'
+     * Cette methode fait appel aux getter et setter de la classe Heros pour modifier les attributs du Heros du joueur
+     * Le joueur peut quitter le jeu a tout moment en entrant 'q'
+     *
      * @param scanner Scanner
-     * @param heros Heros
-     * @return heros -> nouveau heros apres modification(s)
+     * @param heros   Heros
+     * @return heros - nouveau heros apres modification(s)
      */
     public Heros modifHeros(Scanner scanner, Heros heros) {
 
@@ -272,7 +277,6 @@ public class Menu {
         System.out.println(heros.toString());
         return heros;
     }
-
 
 
     //******************************************************************************************************************

@@ -6,6 +6,7 @@ import com.company.personnages.Heros;
 public class EventEmpty implements Event {
     /**
      * interaction avec le Heros : ecrit 'case vide'
+     *
      * @param h Heros
      */
     @Override

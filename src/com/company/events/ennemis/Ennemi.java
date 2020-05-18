@@ -4,7 +4,7 @@ import com.company.contrats.Event;
 import com.company.personnages.Heros;
 
 /**
- * classe abstraite implement de Event -> doit avoir une methode interact()
+ * classe abstraite implement de Event - doit avoir une methode interact()
  */
 public abstract class Ennemi implements Event {
 
@@ -25,15 +25,14 @@ public abstract class Ennemi implements Event {
      * constructeur vide : ennemi avec vie et attaque = 0
      */
     public Ennemi() {
-        this(0,0);
+        this(0, 0);
     }
 
     /**
-     *
-     * @param pvie int
+     * @param pvie     int
      * @param pattaque int
      */
-    public Ennemi(int pvie, int pattaque){
+    public Ennemi(int pvie, int pattaque) {
         this.vie = pvie;
         this.attaque = pattaque;
     }
@@ -43,6 +42,7 @@ public abstract class Ennemi implements Event {
     /**
      * La méthode interact() fait partie du contrat entre interface et implements.
      * elle ecrit le nom de l'ennemi et sa force
+     *
      * @param h Heros
      */
     @Override
@@ -54,7 +54,6 @@ public abstract class Ennemi implements Event {
 
 
     /**
-     *
      * @return vie
      */
     public int getVie() {
@@ -62,7 +61,6 @@ public abstract class Ennemi implements Event {
     }
 
     /**
-     *
      * @return attaque
      */
     public int getAttaque() {
@@ -73,7 +71,6 @@ public abstract class Ennemi implements Event {
 
 
     /**
-     *
      * @param vie int
      */
     public void setVie(int vie) {
@@ -81,7 +78,6 @@ public abstract class Ennemi implements Event {
     }
 
     /**
-     *
      * @param attaque int
      */
     public void setAttaque(int attaque) {

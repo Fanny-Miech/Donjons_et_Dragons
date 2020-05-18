@@ -3,7 +3,7 @@ package com.company.contrats;
 import com.company.personnages.Heros;
 
 /**
- * interface avec contrat --> interact(Heros)
+ * interface avec contrat -- interact(Heros)
  */
 public interface Event {
 

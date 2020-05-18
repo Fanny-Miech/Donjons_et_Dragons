@@ -35,41 +35,43 @@ public class PlateauDeJeu {
     //*************  CONSTRUCTEURS  **************************
 
     /**
-     *Le constructeur du plateau de jeu instancie un nouveau plateau de jeu en dur avec des events (dragon, Sorcier... ou case vide)
+     * Le constructeur du plateau de jeu instancie un nouveau plateau de jeu en dur avec des events (dragon, Sorcier... ou case vide)
+     *
+     * @param nbCase int
      */
     public PlateauDeJeu(int nbCase) {
         this.nbCase = nbCase;
         this.plateau = new ArrayList<Event>();
-        for (int i=1; i<nbCase+1 ; i++){
+        for (int i = 1; i < nbCase + 1; i++) {
 
             Event event;
 
             switch (i) {
-                case 45, 52, 56, 62 :
+                case 45, 52, 56, 62:
                     event = new Dragon();
                     break;
-                case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47 :
+                case 10, 20, 25, 32, 35, 36, 37, 40, 44, 47:
                     event = new Sorcier();
                     break;
-                case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 :
+                case 3, 6, 9, 12, 15, 18, 21, 24, 27, 30:
                     event = new Gobelin();
                     break;
-                case 2, 11, 5, 22, 38 :
+                case 2, 11, 5, 22, 38:
                     event = new Massue();
                     break;
-                case 19, 26, 42, 53 :
+                case 19, 26, 42, 53:
                     event = new Epee();
                     break;
-                case 1, 4, 8, 17, 23 :
+                case 1, 4, 8, 17, 23:
                     event = new Eclair();
                     break;
-                case 48, 49 :
+                case 48, 49:
                     event = new BouleDeFeu();
                     break;
-                case 7, 13, 31, 33, 39, 43 :
+                case 7, 13, 31, 33, 39, 43:
                     event = new Standard();
                     break;
-                case 28, 41 :
+                case 28, 41:
                     event = new Big();
                     break;
                 default:
@@ -86,15 +88,17 @@ public class PlateauDeJeu {
     //******************  METHODS  ***************************************
 
     /**
-     * cette methode melange les cases du pateau existant
+     * cette methode melange les cases du plateau existant
      */
-    public void shuffle(){
+    public void shuffle() {
         Collections.shuffle(this.plateau);
 
     }
 
     /**
-     *cette methode affiche l'evenement qui se trouve sur chaque case du plateau
+     * cette methode affiche l'evenement qui se trouve sur chaque case du plateau
+     *
+     * @param plateau ArrayList
      */
     public void display(ArrayList<Event> plateau) {
 
@@ -109,7 +113,6 @@ public class PlateauDeJeu {
     //**************** GETTER  ************************************
 
     /**
-     *
      * @return le nombre de case du plateau (int)
      */
     public int getNbCase() {
@@ -118,7 +121,6 @@ public class PlateauDeJeu {
 
 
     /**
-     *
      * @return le plateau (ArrayList)
      */
     public ArrayList<Event> getPlateau() {
@@ -128,8 +130,9 @@ public class PlateauDeJeu {
     //*******************  SETTER  **********************************
 
     /**
-     *Permet de modifier l'attribut plateau
-     * @param plateau ArrayList<>
+     * Permet de modifier l'attribut plateau
+     *
+     * @param plateau ArrayList
      */
     public void setPlateau(ArrayList<Event> plateau) {
         this.plateau = plateau;
@@ -137,12 +140,12 @@ public class PlateauDeJeu {
 
     /**
      * permet de modifier l'attribut nbCase
+     *
      * @param nbCase int
      */
     public void setNbCase(int nbCase) {
         this.nbCase = nbCase;
     }
-
 
 
 }

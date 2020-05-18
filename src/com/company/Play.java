@@ -32,7 +32,8 @@ public class Play {
     //********************************************************************
 
     /**
-     * Calcule le jet de de (1 de)
+     * Calcule le lancer de de (1 de)
+     *
      * @return une valeur aleatoire entre 1 et 6
      */
     public int dice() {
@@ -45,9 +46,10 @@ public class Play {
 
 
     /**
-     *Cette methode instancie un nouveau plateau de jeu
+     * Cette methode instancie un nouveau plateau de jeu
      * <p>Elle permet au joueur d'avancer sur le plateau de jeu et d'interagir en fonction des evenements rencontres (ennemi, bonus ou case vide)</p>
-     * @param perso Heros -> les interactions sont differentes selon s'il s'agit d'un Guerrier ou d'un Magicien
+     *
+     * @param perso Heros - les interactions sont differentes selon s'il s'agit d'un Guerrier ou d'un Magicien
      */
     public void playGame(Heros perso) {
 
@@ -100,7 +102,8 @@ public class Play {
 
 
     /**
-     *Cette methode permet au joueur d'avancer sur le plateau en fonction du lancer de de
+     * Cette methode permet au joueur d'avancer sur le plateau en fonction du lancer de de
+     *
      * @param dice int
      * @return nouvelle position du joueur
      * @throws PersonnageHorsPlateauException si le joueur sort du plateau de jeu

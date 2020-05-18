@@ -3,22 +3,26 @@ package com.company.events.bonus.attack.armes;
 import com.company.events.bonus.attack.Attack;
 import com.company.personnages.*;
 
-
+/**
+ * classe abstraite fille de Attack et parente de Epee et Massue
+ */
 public abstract class Arme extends Attack {
 
+    /**
+     * constructeur avec parametres
+     *
+     * @param name  String
+     * @param force int
+     */
     public Arme(String name, int force) {
         super(name, force);
     }
 
-//    @Override
-//    public void interact (Heros h) {
-//        if (h instanceof Magicien){
-//            System.out.println("Nouvelle Arme pour ton Guerrier : " + this.name);
-//        } else if (h instanceof Guerrier) {
-//            System.out.println("Pas d'Arme pour un Magicien !");
-//        }
-//    }
-
+    /**
+     * cette methode ajoute des points de force au Heros si celui-ci est un Guerrier sinon 'pas d'arme pour un Magicien'
+     *
+     * @param h Heros
+     */
     @Override
     public void interact(Heros h) {
         super.interact(h);

@@ -17,6 +17,9 @@ public abstract class Heros {
 
     //*********************** CONSTRUCTEURS  **********************
 
+    /**
+     * constructeur vide
+     */
     public Heros() {
 //        nom = "Inconnu";
 //        vie = 3;
@@ -26,6 +29,11 @@ public abstract class Heros {
         this("Inconnu");
     }
 
+    /**
+     * constructeur avec nom en parametre
+     *
+     * @param pickNom String
+     */
     public Heros(String pickNom) {
 //        nom = pickNom;
 //        vie = 3;
@@ -35,6 +43,15 @@ public abstract class Heros {
         this(pickNom, 3, 5, "??", "??");
     }
 
+    /**
+     * constructeur du Heros avec parametre
+     *
+     * @param pickNom     String
+     * @param pickVie     int
+     * @param pickForce   int
+     * @param pickAttaque String
+     * @param pickDefense String
+     */
     public Heros(String pickNom, int pickVie, int pickForce, String pickAttaque, String pickDefense) {
         nom = pickNom;
         vie = pickVie;
@@ -46,12 +63,11 @@ public abstract class Heros {
     //*************  METHODS  ********************
 
     /**
-     *
      * @return String avec le nom, la vie et la force du Heros
      */
     @Override
     public String toString() {
-        return  "Nom du Héros : " + this.nom
+        return "Nom du Héros : " + this.nom
                 + "\nPoints de vie : " + this.vie
                 + "\nForce d'attaque : " + this.force;
     }
@@ -60,7 +76,6 @@ public abstract class Heros {
 
 
     /**
-     *
      * @return nom du Heros (string)
      */
     public String getNom() {
@@ -68,7 +83,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @return vie du heros (int)
      */
     public int getVie() {
@@ -76,7 +90,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @return force du heros (int)
      */
     public int getForce() {
@@ -84,7 +97,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @return attaque du heros
      */
     public String getAttaque() {
@@ -92,7 +104,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @return defense du heros
      */
     public String getDefense() {
@@ -104,7 +115,6 @@ public abstract class Heros {
 
 
     /**
-     *
      * @param nom String
      */
     public void setNom(String nom) {
@@ -112,7 +122,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @param vie int
      */
     public void setVie(int vie) {
@@ -120,7 +129,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @param force int
      */
     public void setForce(int force) {
@@ -128,7 +136,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @param attaque String
      */
     public void setAttaque(String attaque) {
@@ -136,7 +143,6 @@ public abstract class Heros {
     }
 
     /**
-     *
      * @param defense String
      */
     public void setDefense(String defense) {

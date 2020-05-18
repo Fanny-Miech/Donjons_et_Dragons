@@ -3,21 +3,26 @@ package com.company.events.bonus.attack.sorts;
 import com.company.events.bonus.attack.Attack;
 import com.company.personnages.*;
 
+/**
+ * classe abstraite fille de Attack
+ */
 public abstract class Sort extends Attack {
 
+    /**
+     * constructeur avec parametres
+     *
+     * @param name  String
+     * @param force int
+     */
     public Sort(String name, int force) {
         super(name, force);
     }
 
-//    @Override
-//    public void interact (Heros h) {
-//        if (h instanceof Magicien){
-//            System.out.println("Nouveau sort pour ton Magicien : " + this.name);
-//        } else if (h instanceof Guerrier) {
-//            System.out.println("Pas de sort pour un Guerrier !");
-//        }
-//    }
-
+    /**
+     * cette methode ajoute des points de force au heros si celui-ci est un Magicien sinon "pas de sort pour un Guerrier"
+     *
+     * @param h Heros
+     */
     @Override
     public void interact(Heros h) {
         super.interact(h);

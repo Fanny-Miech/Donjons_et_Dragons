@@ -2,8 +2,14 @@ package com.company.events.bonus.attack.armes;
 
 import com.company.events.bonus.attack.Attack;
 
+/**
+ * class fille de Arme
+ */
 public class Massue extends Arme {
-    public Massue(){
+    /**
+     * constructeur sans parametre
+     */
+    public Massue() {
         super("Massue", 3);
     }
 }

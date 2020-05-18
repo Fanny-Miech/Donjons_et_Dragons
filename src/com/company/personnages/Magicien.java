@@ -22,7 +22,7 @@ public class Magicien extends Heros {
 
     public Magicien(String pickNom) {
         //super(pickNom, 3, 8, "??", "??");
-        this(pickNom,3,8);
+        this(pickNom, 3, 8);
 
     }
 
@@ -36,7 +36,6 @@ public class Magicien extends Heros {
     //toString -> retourne nom, image, vie et force.
 
     /**
-     *
      * @return Magicien en plus du toString du parent
      */
     @Override
@@ -66,6 +65,7 @@ public class Magicien extends Heros {
 
 
     /**
+     * Permet de modifier l'attribut nom
      *
      * @param nom String
      */
@@ -79,6 +79,7 @@ public class Magicien extends Heros {
 
     /**
      * verifie si la vie est bien comprise entre 3 et 6 sinon vie = vieMin ou vieMax
+     *
      * @param vie int
      */
     public void setVie(int vie) {
@@ -93,6 +94,7 @@ public class Magicien extends Heros {
 
     /**
      * verifie si la force est bien comprise entre 8 et 15 sinon force = forceMin ou forceMax
+     *
      * @param force int
      */
     public void setForce(int force) {
