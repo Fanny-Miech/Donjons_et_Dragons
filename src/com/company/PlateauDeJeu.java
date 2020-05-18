@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+/**
+ * Cette classe gère la création et l'affichage d'un nouveau plateau de jeu
+ */
 public class PlateauDeJeu {
 
     //*************  ATTRIBUTS  ****************************

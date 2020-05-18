@@ -7,10 +7,16 @@ import com.company.personnages.Magicien;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Cette classe gère le déroulement du jeu
+ */
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
+        /**
+         * Déclare et instancie un scanner qu'on passera en paramètre
+         */
         Scanner sc = new Scanner(System.in);
 
 
