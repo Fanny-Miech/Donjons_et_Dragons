@@ -2,12 +2,14 @@ package com.company.contrats;
 
 import com.company.personnages.Heros;
 
-//contrat -->
+/**
+ * interface avec contrat --> interact(Heros)
+ */
 public interface Event {
 
    /**
-    *
-    * @param h
+    *interaction avec le Heros
+    * @param h Heros
     */
    void interact(Heros h);
 

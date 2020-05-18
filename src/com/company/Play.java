@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Cette classe gère l'algorithme du jeu
+ * Cette classe gere l'algorithme du jeu
  */
 public class Play {
 
@@ -32,8 +32,8 @@ public class Play {
     //********************************************************************
 
     /**
-     * Calcul le jet de dé (1 dé)
-     * @return une valeur aléatoire entre 1 et 6
+     * Calcule le jet de de (1 de)
+     * @return une valeur aleatoire entre 1 et 6
      */
     public int dice() {
         return 1 + (int) (Math.random() * 6);
@@ -45,9 +45,9 @@ public class Play {
 
 
     /**
-     *Cette méthode instancie un nouveau plateau de jeu
-     * Elle permet au joueur d'avancer sur le plateau de jeu et d'interagir en fonction des évènements rencontrés (ennemi, bonus ou case vide)
-     * @param perso Heros -> les interactions sont différentes selon s'il s'agit d'un Guerrier ou d'un Magicien
+     *Cette methode instancie un nouveau plateau de jeu
+     * <p>Elle permet au joueur d'avancer sur le plateau de jeu et d'interagir en fonction des evenements rencontres (ennemi, bonus ou case vide)</p>
+     * @param perso Heros -> les interactions sont differentes selon s'il s'agit d'un Guerrier ou d'un Magicien
      */
     public void playGame(Heros perso) {
 
@@ -100,7 +100,7 @@ public class Play {
 
 
     /**
-     *Cette méthode permet au joueur d'avancer sur le plateau en fonction du lancer de dé
+     *Cette methode permet au joueur d'avancer sur le plateau en fonction du lancer de de
      * @param dice int
      * @return nouvelle position du joueur
      * @throws PersonnageHorsPlateauException si le joueur sort du plateau de jeu

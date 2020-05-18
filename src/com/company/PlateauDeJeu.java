@@ -17,22 +17,28 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * Cette classe gère la création et l'affichage d'un nouveau plateau de jeu
+ * Cette classe gere la creation et l'affichage d'un nouveau plateau de jeu
  */
 public class PlateauDeJeu {
 
     //*************  ATTRIBUTS  ****************************
 
+    /**
+     * Nombre de case du plateau
+     */
     int nbCase;
+    /**
+     * Le plateau est une ArrayList d'Event
+     */
     ArrayList<Event> plateau;
 
     //*************  CONSTRUCTEURS  **************************
 
     /**
-     *
+     *Le constructeur du plateau de jeu instancie un nouveau plateau de jeu en dur avec des events (dragon, Sorcier... ou case vide)
      */
     public PlateauDeJeu(int nbCase) {
-        this.nbCase = 64;
+        this.nbCase = nbCase;
         this.plateau = new ArrayList<Event>();
         for (int i=1; i<nbCase+1 ; i++){
 
@@ -79,13 +85,16 @@ public class PlateauDeJeu {
 
     //******************  METHODS  ***************************************
 
+    /**
+     * cette methode melange les cases du pateau existant
+     */
     public void shuffle(){
         Collections.shuffle(this.plateau);
 
     }
 
     /**
-     *
+     *cette methode affiche l'evenement qui se trouve sur chaque case du plateau
      */
     public void display(ArrayList<Event> plateau) {
 
@@ -98,11 +107,20 @@ public class PlateauDeJeu {
     }
 
     //**************** GETTER  ************************************
+
+    /**
+     *
+     * @return le nombre de case du plateau (int)
+     */
     public int getNbCase() {
         return nbCase;
     }
 
 
+    /**
+     *
+     * @return le plateau (ArrayList)
+     */
     public ArrayList<Event> getPlateau() {
         return plateau;
     }
@@ -110,13 +128,17 @@ public class PlateauDeJeu {
     //*******************  SETTER  **********************************
 
     /**
-     *
-     * @param plateau
+     *Permet de modifier l'attribut plateau
+     * @param plateau ArrayList<>
      */
     public void setPlateau(ArrayList<Event> plateau) {
         this.plateau = plateau;
     }
 
+    /**
+     * permet de modifier l'attribut nbCase
+     * @param nbCase int
+     */
     public void setNbCase(int nbCase) {
         this.nbCase = nbCase;
     }

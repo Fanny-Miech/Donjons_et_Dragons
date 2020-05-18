@@ -1,5 +1,8 @@
 package com.company.personnages;
 
+/**
+ * classe fille de heros
+ */
 public class Guerrier extends Heros {
 
     //*****************  ATTRIBUTS  (public)  ************************
@@ -32,6 +35,10 @@ public class Guerrier extends Heros {
 
     //toString -> retourne nom, image, vie et force.
 
+    /**
+     *
+     * @return string ajoute la classe du heros a la methode super.toString()
+     */
     @Override
     public String toString() {
         return "--> Guerrier\n" + super.toString();
@@ -59,6 +66,10 @@ public class Guerrier extends Heros {
 
     //*********************   MUTATEURS   (setters)  ****************************
 
+    /**
+     *
+     * @param nom String
+     */
     public void setNom(String nom) {
 
         if (!nom.equals("")) {
@@ -68,6 +79,10 @@ public class Guerrier extends Heros {
         }
     }
 
+    /**
+     * verifie si la vie est bien comprise entre 5 et 10 sinon vie = vieMin ou vieMax
+     * @param vie int
+     */
     public void setVie(int vie) {
         if (vie >= 5 && vie <= 10) {
             super.vie = vie;
@@ -78,6 +93,10 @@ public class Guerrier extends Heros {
         }
     }
 
+    /**
+     * verifie si la force est bien comprise entre 5 et 10 sinon force = forceMin ou forceMax
+     * @param force int
+     */
     public void setForce(int force) {
         if (force >= 5 && force <= 10) {
             super.force = force;

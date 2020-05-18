@@ -1,6 +1,9 @@
 package com.company.personnages;
 
-
+/**
+ * Classe abstraite
+ * classe mere de tous les personnages Heros du jeu (Guerrier et Magicien)
+ */
 public abstract class Heros {
 
     //*****************  ATTRIBUTS  *****************************
@@ -42,6 +45,10 @@ public abstract class Heros {
 
     //*************  METHODS  ********************
 
+    /**
+     *
+     * @return String avec le nom, la vie et la force du Heros
+     */
     @Override
     public String toString() {
         return  "Nom du Héros : " + this.nom
@@ -52,22 +59,42 @@ public abstract class Heros {
     //************  GETTERS  ******************
 
 
+    /**
+     *
+     * @return nom du Heros (string)
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     *
+     * @return vie du heros (int)
+     */
     public int getVie() {
         return vie;
     }
 
+    /**
+     *
+     * @return force du heros (int)
+     */
     public int getForce() {
         return force;
     }
 
+    /**
+     *
+     * @return attaque du heros
+     */
     public String getAttaque() {
         return attaque;
     }
 
+    /**
+     *
+     * @return defense du heros
+     */
     public String getDefense() {
         return defense;
     }
@@ -76,22 +103,42 @@ public abstract class Heros {
     //******************   SETTERS  ***********************
 
 
+    /**
+     *
+     * @param nom String
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     *
+     * @param vie int
+     */
     public void setVie(int vie) {
         this.vie = vie;
     }
 
+    /**
+     *
+     * @param force int
+     */
     public void setForce(int force) {
         this.force = force;
     }
 
+    /**
+     *
+     * @param attaque String
+     */
     public void setAttaque(String attaque) {
         this.attaque = attaque;
     }
 
+    /**
+     *
+     * @param defense String
+     */
     public void setDefense(String defense) {
         this.defense = defense;
     }

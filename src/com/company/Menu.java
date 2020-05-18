@@ -6,7 +6,7 @@ import com.company.personnages.*;
 import java.util.Scanner;
 
 /**
- * Cette classe gère l'affichage du menu : choix et création du Heros
+ * Cette classe gere l'affichage du menu : choix et creation du Heros
  */
 public class Menu {
 
@@ -17,7 +17,7 @@ public class Menu {
 
 
     /**
-     *Cette méthode accueille le joueur sur le plateau de Donjon et Dragons
+     *Cette methode accueille le joueur sur le plateau de Donjon et Dragons
      */
     public void welcome() {
         System.out.println("\n---------------------------------------------------------------------" +
@@ -33,7 +33,7 @@ public class Menu {
     //*****************************************************************
 
     /**
-     *Cette Méthode arrête l'exécution du code
+     *Cette Methode arrete l'execution du code
      * @param str String
      */
     public void toQuit(String str) {
@@ -49,7 +49,7 @@ public class Menu {
 
 
     /**
-     *Cette méthode demande au joueur de choisir son Héros : Guerrier ou Magicien
+     *Cette methode demande au joueur de choisir son Heros : Guerrier ou Magicien
      * Le joueur peut quitter le jeu à tout moment en tapant 'q'
      * @param scanner Scanner
      * @return heros Heros
@@ -116,7 +116,7 @@ public class Menu {
     //**********************************************************
 
     /**
-     *Cette méthode demande au joueur de lancer le jeu
+     *Cette methode demande au joueur de lancer le jeu
      * S'il tape 'o' ou '' le jeu commence -> Play play = new Play()
      * @param perso Heros
      */
@@ -139,10 +139,10 @@ public class Menu {
     //*************************************************************************************
 
     /**
-     *Cette méthode permet de créer un nouveau personnage Guerrier ou Magicien selon le choix fait précédemment
+     *Cette methode permet de creer un nouveau personnage Guerrier ou Magicien selon le choix fait precedemment
      * Elle demande au joueur d'entrer un nom, des points de vie et une force d'attaque
-     * Selon les input du joueur différents constructeurs seront appelés
-     * Les input seront aussi testés pour correspondre aux exigences des attributs de chaque personnage
+     * Selon les input du joueur differents constructeurs seront appeles
+     * Les input seront aussi testes pour correspondre aux exigences des attributs de chaque personnage
      * Le joueur peut quitter le programme à tout moment en tapant 'q'
      * @param scanner Scanner
      * @param type String -> le nom du Heros choisi par le joueur
@@ -240,11 +240,11 @@ public class Menu {
 
 
     /**
-     *Cette méthode fait appel aux getter et setter de la classe Heros pour modifier les attributs du Heros du joueur
+     *Cette methode fait appel aux getter et setter de la classe Heros pour modifier les attributs du Heros du joueur
      * Le joueur peut quitter le jeu à tout moment en entrant 'q'
      * @param scanner Scanner
      * @param heros Heros
-     * @return heros -> nouveau heros après modification(s)
+     * @return heros -> nouveau heros apres modification(s)
      */
     public Heros modifHeros(Scanner scanner, Heros heros) {
 

@@ -1,5 +1,8 @@
 package com.company.personnages;
 
+/**
+ * classe enfant de Heros
+ */
 public class Magicien extends Heros {
 
     //*****************  VARIABLES  (public)  ************************
@@ -32,6 +35,10 @@ public class Magicien extends Heros {
 
     //toString -> retourne nom, image, vie et force.
 
+    /**
+     *
+     * @return Magicien en plus du toString du parent
+     */
     @Override
     public String toString() {
         return "--> Magicien\n" + super.toString();
@@ -58,6 +65,10 @@ public class Magicien extends Heros {
     //**********************   SETTERS  ***********************
 
 
+    /**
+     *
+     * @param nom String
+     */
     public void setNom(String nom) {
         if (!nom.equals("")) {
             super.nom = nom;
@@ -66,6 +77,10 @@ public class Magicien extends Heros {
         }
     }
 
+    /**
+     * verifie si la vie est bien comprise entre 3 et 6 sinon vie = vieMin ou vieMax
+     * @param vie int
+     */
     public void setVie(int vie) {
         if (vie >= 3 && vie <= 6) {
             super.vie = vie;
@@ -76,6 +91,10 @@ public class Magicien extends Heros {
         }
     }
 
+    /**
+     * verifie si la force est bien comprise entre 8 et 15 sinon force = forceMin ou forceMax
+     * @param force int
+     */
     public void setForce(int force) {
         if (force >= 8 && force <= 15) {
             super.force = force;
