@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Play {
 
     /**
-     * Nombre de case sur le plateau
+     * Nombre de cases sur le plateau
      */
     int nbCase = 64;
     /**
