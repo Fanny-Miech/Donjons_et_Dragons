@@ -6,7 +6,7 @@ import com.company.events.bonus.attack.armes.Epee;
 import com.company.events.bonus.attack.armes.Massue;
 import com.company.events.bonus.potions.Big;
 import com.company.events.bonus.potions.Standard;
-import com.company.contrats.Event;
+import com.company.contrats.IEvent;
 import com.company.events.EventEmpty;
 import com.company.events.ennemis.Dragon;
 import com.company.events.ennemis.Gobelin;
@@ -14,7 +14,6 @@ import com.company.events.ennemis.Sorcier;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 /**
  * Cette classe gere la creation et l'affichage d'un nouveau plateau de jeu
@@ -30,7 +29,7 @@ public class PlateauDeJeu {
     /**
      * Le plateau est une ArrayList d'Event
      */
-    ArrayList<Event> plateau;
+    ArrayList<IEvent> plateau;
 
     //*************  CONSTRUCTEURS  **************************
 
@@ -41,10 +40,10 @@ public class PlateauDeJeu {
      */
     public PlateauDeJeu(int nbCase) {
         this.nbCase = nbCase;
-        this.plateau = new ArrayList<Event>();
-        for (int i = 1; i < nbCase + 1; i++) {
+        this.plateau = new ArrayList<IEvent>();
+        for (int i = 0; i <= nbCase ; i++) {
 
-            Event event;
+            IEvent event;
 
             switch (i) {
                 case 45, 52, 56, 62:
@@ -92,7 +91,6 @@ public class PlateauDeJeu {
      */
     public void shuffle() {
         Collections.shuffle(this.plateau);
-
     }
 
     /**
@@ -100,11 +98,11 @@ public class PlateauDeJeu {
      *
      * @param plateau ArrayList
      */
-    public void display(ArrayList<Event> plateau) {
+    public void display(ArrayList<IEvent> plateau) {
 
         System.out.println("Voici ton nouveau plateau de jeu : ");
-        int i = 1;
-        for (Event event : plateau) {
+        int i = 0;
+        for (IEvent event : plateau) {
             System.out.println("Case " + i + " : " + event.getClass().getSimpleName());
             i++;
         }
@@ -123,7 +121,7 @@ public class PlateauDeJeu {
     /**
      * @return le plateau (ArrayList)
      */
-    public ArrayList<Event> getPlateau() {
+    public ArrayList<IEvent> getPlateau() {
         return plateau;
     }
 
@@ -134,7 +132,7 @@ public class PlateauDeJeu {
      *
      * @param plateau ArrayList
      */
-    public void setPlateau(ArrayList<Event> plateau) {
+    public void setPlateau(ArrayList<IEvent> plateau) {
         this.plateau = plateau;
     }
 

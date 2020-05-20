@@ -1,9 +1,9 @@
 package com.company.events;
 
-import com.company.contrats.Event;
+import com.company.contrats.IEvent;
 import com.company.personnages.Heros;
 
-public class EventEmpty implements Event {
+public class EventEmpty implements IEvent {
     /**
      * interaction avec le Heros : ecrit 'case vide'
      *

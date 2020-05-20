@@ -13,6 +13,7 @@ public abstract class Heros {
     protected int force;
     protected String attaque;
     protected String defense;
+    protected int position = 0;
 
 
     //*********************** CONSTRUCTEURS  **********************
@@ -110,6 +111,12 @@ public abstract class Heros {
         return defense;
     }
 
+    /**
+     * @return la position du joueur sur le plateau de jeu
+     */
+    public int getPosition() {
+        return position;
+    }
 
     //******************   SETTERS  ***********************
 
@@ -125,7 +132,12 @@ public abstract class Heros {
      * @param vie int
      */
     public void setVie(int vie) {
-        this.vie = vie;
+
+        if (vie < 0) {
+            this.vie = 0;
+        } else {
+            this.vie = vie;
+        }
     }
 
     /**
@@ -149,4 +161,13 @@ public abstract class Heros {
         this.defense = defense;
     }
 
+    /**
+     * @param position int
+     */
+    public void setPosition(int position) {
+        if (position < 0) {
+            this.position = 0;
+        }
+        this.position = position;
+    }
 }

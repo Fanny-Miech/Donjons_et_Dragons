@@ -10,6 +10,9 @@ import java.util.Scanner;
  */
 public class Menu {
 
+    private static Scanner scanner;
+    //private Scanner scanner = new Scanner(System.in);
+
 
     //*********************************************************************
     //                      WELCOME
@@ -37,12 +40,29 @@ public class Menu {
      *
      * @param str String
      */
-    public void toQuit(String str) {
+    public static void toQuit(String str) {
         if (str.equals("q")) {
             System.out.println("Tu as quitté le jeu ! A bientôt.");
             System.exit(0);
         }
     }
+
+    //*********************************************************************
+    //                  REPLAY
+    //*********************************************************************
+
+    /**
+     * Cette methode demande au joueur s'il veut refaire une partie
+     * Auquel cas il recommence avec un nv perso
+     *
+     * @param h Heros
+     */
+    public static void replay(Heros h) {
+        System.out.println("Veux-tu faire une nouvelle partie ? (o/n)");
+        String replay = scanner.nextLine();
+        Menu.toQuit(replay);
+    }
+
 
     //*******************************************************************************
     //                   CHOIX DU PERSO
@@ -162,7 +182,7 @@ public class Menu {
         //récupère input name
         System.out.print("\nChoisis un nom pour ton " + type + " : ");
         String herosName = scanner.nextLine();
-        this.toQuit(herosName);
+        Menu.toQuit(herosName);
 
 
         //récupère input vie
@@ -174,7 +194,7 @@ public class Menu {
         }
         System.out.print("Choisis une force de vie pour ton " + type + " " + vie + " : ");
         String herosVie = scanner.nextLine();
-        this.toQuit(herosVie);
+        Menu.toQuit(herosVie);
 
         //récupérer input force
         String force;
@@ -185,7 +205,7 @@ public class Menu {
         }
         System.out.print("Choisis une force d'attaque pour ton " + type + " " + force + " : ");
         String herosForce = scanner.nextLine();
-        this.toQuit(herosForce);
+        Menu.toQuit(herosForce);
 
 
         //---------------------------------------------------------------------------
@@ -255,21 +275,21 @@ public class Menu {
 
         System.out.println("Nom actuel : " + heros.getNom() + " //Nouveau nom : ");
         String newName = scanner.nextLine();
-        this.toQuit(newName);
+        Menu.toQuit(newName);
         if (!newName.equals("")) {
             heros.setNom(newName);
         }
 
         System.out.println("Vie actuelle : " + heros.getVie() + " //Nouvelle vie : ");
         String newVie = scanner.nextLine();
-        this.toQuit(newVie);
+        Menu.toQuit(newVie);
         if (!newVie.equals("")) {
             heros.setVie(Integer.parseInt(newVie));
         }
 
         System.out.println("Force actuelle : " + heros.getForce() + " //Nouvelle force : ");
         String newForce = scanner.nextLine();
-        this.toQuit(newForce);
+        Menu.toQuit(newForce);
         if (!newForce.equals("")) {
             heros.setForce(Integer.parseInt(newForce));
         }

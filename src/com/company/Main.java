@@ -1,10 +1,7 @@
 package com.company;
 
-import com.company.contrats.Event;
 import com.company.personnages.Heros;
-import com.company.personnages.Magicien;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**

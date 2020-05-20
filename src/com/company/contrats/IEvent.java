@@ -5,7 +5,7 @@ import com.company.personnages.Heros;
 /**
  * interface avec contrat -- interact(Heros)
  */
-public interface Event {
+public interface IEvent {
 
    /**
     *interaction avec le Heros

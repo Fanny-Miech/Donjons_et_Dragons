@@ -1,12 +1,12 @@
 package com.company.events.bonus;
 
-import com.company.contrats.Event;
+import com.company.contrats.IEvent;
 import com.company.personnages.Heros;
 
 /**
  * classe abstraite implements event
  */
-public abstract class Bonus implements Event {
+public abstract class Bonus implements IEvent {
 
     //***************  METHODS  ****************
 
