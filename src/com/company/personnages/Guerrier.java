@@ -80,12 +80,12 @@ public class Guerrier extends Heros {
      * @param vie int
      */
     public void setVie(int vie) {
-        if (vie >= 5 && vie <= 10) {
+        if (vie >= 0 && vie <= 10) {
             super.vie = vie;
         } else if (vie > 10) {
             super.vie = 10;
         } else {
-            super.vie = 5;
+            super.vie = 0;
         }
     }
 

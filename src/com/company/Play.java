@@ -18,15 +18,17 @@ public class Play {
     /**
      * Nombre de cases sur le plateau
      */
-    int nbCase = 64;
+    private int nbCase = 64;
     /**
      * La position du joueur (quel n° de case ?)
      */
-    int playerCase;
+    private int playerCase;
     /**
      * le nombre de tour de jeu
      */
-    int lap = 1;
+    private int lap = 1;
+
+    private boolean play = true;
 
 
     //**********************************************************************
@@ -69,8 +71,7 @@ public class Play {
 
 
         try {
-            while (playerCase <= nbCase) {
-
+            while (playerCase <= nbCase && play) {
 
                 sc.nextLine();
 
@@ -83,47 +84,19 @@ public class Play {
                 System.out.println("Tour n° : " + lap + "\n" + perso.getNom() + " se trouve sur la case " + playerCase + "/64.");
 
                 plateau.get(playerCase).interact(perso);
-                while (plateau.get(playerCase) instanceof Ennemi) {
 
-                    boolean isEnnemi = true;
-                    //while (plateau.get(playerCase) instanceof Ennemi) {
-                    Ennemi ennemi = (Ennemi) plateau.get(playerCase); //caste l'ennemi IEvent en Ennemi -> force la classe
-
-                    while (perso.getVie() > 0 && ennemi.getVie() > 0 && isEnnemi) {
-
-                        //demande au joueur s'il veut se battre ou fuir + récupère et test l'input
-                        System.out.println("Ta vie : " + perso.getVie() + " | ta force : " + perso.getForce()
-                                + "\nVeux-tu te battre ?  (o/n)");
-                        Scanner scanner = new Scanner(System.in);
-                        String toDo = scanner.nextLine();
-                        Menu.toQuit(toDo);
-
-                        if (toDo.equals("o")) {
-                            ennemi.fight(perso);
-                            if (ennemi.getVie() == 0) {
-                                plateau.set(playerCase, new EventEmpty());
-                            }
-                        } else {
-                            perso.setPosition(ennemi.goAway(perso));
-                            playerCase = perso.getPosition();
-                            plateau.get(playerCase).interact(perso);
-
-                            isEnnemi = false;
-                        }
-                    }
-                    // }
-
+                if (plateau.get(playerCase) instanceof Ennemi) {
+                    this.interactEnnemy(plateau, perso);
                 }
+
                 lap++;
             }
-
 
         } catch (
                 PersonnageHorsPlateauException e) {
             playerCase = nbCase;
             System.out.println(e.getMessage());
         }
-
 
         System.out.println("\nYou WIN !");
         System.out.println();
@@ -150,6 +123,54 @@ public class Play {
             return playerCase + dice;
         }
     }
-}
 
+
+//*************************************************************************
+//                     INTERACT ENNEMI
+//****************************************************************************
+
+    /**
+     * Cette methode interagit avec le perso s'il tombe sur une case Ennemi :
+     * Cette methode demande au joueur s'il veut se battre -
+     * si oui : fight ! et si l'ennemi meurt on remplace la case par une case vide.
+     * si non : le joueur recule de random case (entre 1 et 6).
+     *
+     * @param plateau ArrayList
+     * @param perso   Heros
+     */
+    public void interactEnnemy(ArrayList<IEvent> plateau, Heros perso) {
+
+        while (plateau.get(playerCase) instanceof Ennemi) {
+
+            boolean isEnnemi = true;
+
+            Ennemi ennemi = (Ennemi) plateau.get(playerCase); //caste l'ennemi IEvent en Ennemi -> force la classe
+
+            while (perso.getVie() > 0 && ennemi.getVie() > 0 && isEnnemi) {
+
+                //demande au joueur s'il veut se battre ou fuir + récupère et test l'input
+                System.out.println("Ta vie : " + perso.getVie() + " | ta force : " + perso.getForce()
+                        + "\nVeux-tu te battre ?  (o/n)");
+                Scanner scanner = new Scanner(System.in);
+                String toDo = scanner.nextLine();
+                Menu.toQuit(toDo);
+
+                //si le joueur veut se battre -- fight !
+                if (toDo.equals("o")) {
+                    play = ennemi.fight(perso);
+                    //si l'ennemi meurt remplacer la case par une case vide
+                    if (ennemi.getVie() == 0) {
+                        plateau.set(playerCase, new EventEmpty());
+                    }
+                } else { //sinon il recule (goAway
+                    perso.setPosition(ennemi.goAway(perso));
+                    playerCase = perso.getPosition();
+                    plateau.get(playerCase).interact(perso);
+
+                    isEnnemi = false;
+                }
+            }
+        }
+    }
+}
 

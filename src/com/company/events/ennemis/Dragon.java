@@ -8,6 +8,6 @@ public class Dragon extends Ennemi {
      * constructeur sans parametre
      */
     public Dragon() {
-        super(15, 4);
+        super(16, 11);
     }
 }

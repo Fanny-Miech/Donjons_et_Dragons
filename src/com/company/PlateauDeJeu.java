@@ -25,11 +25,11 @@ public class PlateauDeJeu {
     /**
      * Nombre de case du plateau
      */
-    int nbCase;
+    private int nbCase;
     /**
      * Le plateau est une ArrayList d'Event
      */
-    ArrayList<IEvent> plateau;
+    private ArrayList<IEvent> plateau;
 
     //*************  CONSTRUCTEURS  **************************
 

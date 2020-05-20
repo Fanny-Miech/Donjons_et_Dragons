@@ -60,7 +60,8 @@ public abstract class Ennemi implements IEvent {
      *
      * @param h Heros
      */
-    public void fight(Heros h) {
+    public boolean fight(Heros h) {
+        boolean play = true;
         System.out.println("C'est toi qui attaques en premier " + h.getNom() + " | Force de frappe : " + h.getForce());
         this.setVie(this.getVie() - h.getForce());
         System.out.println("Nouvelle vie de ton ennemi : " + this.getVie());
@@ -70,14 +71,22 @@ public abstract class Ennemi implements IEvent {
             System.out.println("Maintenant c'est lui qui t'attaque !!!!");
             int newVie = h.getVie() - this.getAttaque();
             h.setVie(newVie);
-            System.out.println("Maintenant ta vie est à : " + h.getVie());
+            System.out.println("Ta vie est : " + h.getVie());
             if (h.getVie() == 0) {
                 System.out.println("Tu es mort " + h.getNom());
+                play = false;
                 Menu.replay(h);
             }
         }
+        return play;
     }
 
+    /**
+     * Cette methode fait reculer le joueur d'un nombre aleatoire de case entre 1 et 6
+     *
+     * @param h Heros
+     * @return la nouvelle position du joueur
+     */
     public int goAway(Heros h) {
         int random = 1 + (int) (Math.random() * 6);
         int newPosition = h.getPosition() - random;
