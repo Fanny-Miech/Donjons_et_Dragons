@@ -22,6 +22,14 @@ public class Main {
 
         bdd.getHero(2);
 
+        bdd.createHero("Magicien", "test", 1, 1, "aucun");
+
+        bdd.updateHero(5, "Guerrier", "modif_ok", 0, 0, "aucun");
+
+        bdd.deleteHero();
+
+        bdd.clean();
+
 
         /**
          * Declare et instancie un scanner qu'on passera en parametre
