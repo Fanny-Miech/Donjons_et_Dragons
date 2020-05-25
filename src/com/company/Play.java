@@ -28,6 +28,9 @@ public class Play {
      */
     private int lap = 1;
 
+    /**
+     * pour savoir si une partie est en cours
+     */
     private boolean play = true;
 
 
