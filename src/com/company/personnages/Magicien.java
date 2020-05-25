@@ -15,8 +15,8 @@ public class Magicien extends Heros {
     //**************    CONSTRUCTEURS   *******************************
 
     public Magicien() {
-        //super("Inconnu", 3, 8, "??", "??");
-        this("Inconnu");
+        //super("Harry", 3, 8, "??", "??");
+        this("Harry");
 
     }
 

@@ -18,8 +18,8 @@ public class Guerrier extends Heros {
      * constructeur vide
      */
     public Guerrier() {
-        //super("Inconnu", 5, 5, "??", "??");
-        this("Inconnu");
+        //super("Ulk", 5, 5, "??", "??");
+        this("Ulk");
 
     }
 
@@ -80,12 +80,12 @@ public class Guerrier extends Heros {
      * @param vie int
      */
     public void setVie(int vie) {
-        if (vie >= 0 && vie <= 10) {
+        if (vie >= 5 && vie <= 10) {
             super.vie = vie;
         } else if (vie > 10) {
             super.vie = 10;
         } else {
-            super.vie = 0;
+            super.vie = 5;
         }
     }
 

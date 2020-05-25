@@ -15,23 +15,12 @@ public class Main {
         // write your code here
 
 
-            BDD bdd = new BDD();
+        BDD bdd;
+        bdd = new BDD();
 
-            bdd.getHeroes();
+        bdd.getHeroes();
 
-            bdd.getHero(1);
-
-
-
-
-
-
-
-
-
-
-
-
+        bdd.getHero(2);
 
 
         /**

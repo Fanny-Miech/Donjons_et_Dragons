@@ -60,8 +60,8 @@ public abstract class Ennemi implements IEvent {
      *
      * @param h Heros
      */
-    public boolean fight(Heros h) {
-        boolean play = true;
+    public void fight(Heros h) {
+//        boolean play = true;
         System.out.println("C'est toi qui attaques en premier " + h.getNom() + " | Force de frappe : " + h.getForce());
         this.setVie(this.getVie() - h.getForce());
         System.out.println("Nouvelle vie de ton ennemi : " + this.getVie());
@@ -69,16 +69,16 @@ public abstract class Ennemi implements IEvent {
             System.out.println(this.getClass().getSimpleName() + " est mort. Tu peux continuer ton chemin " + h.getNom());
         } else {
             System.out.println("Maintenant c'est lui qui t'attaque !!!!");
-            int newVie = h.getVie() - this.getAttaque();
-            h.setVie(newVie);
+            h.loseVie(this.getAttaque());
             System.out.println("Ta vie est : " + h.getVie());
             if (h.getVie() == 0) {
                 System.out.println("Tu es mort " + h.getNom());
-                play = false;
-                Menu.replay(h);
+                System.exit(0);
+//                play = false;
+//                Menu.replay(h);
             }
         }
-        return play;
+//        return play;
     }
 
     /**

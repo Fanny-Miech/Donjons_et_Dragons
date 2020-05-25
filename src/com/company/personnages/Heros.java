@@ -73,6 +73,14 @@ public abstract class Heros {
                 + "\nForce d'attaque : " + this.force;
     }
 
+    public void loseVie(int force) {
+        if (force>this.vie){
+            this.vie =0;
+        } else {
+            this.vie -= force;
+        }
+    }
+
     //************  GETTERS  ******************
 
 

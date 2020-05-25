@@ -160,7 +160,7 @@ public class Play {
 
                 //si le joueur veut se battre -- fight !
                 if (toDo.equals("o")) {
-                    play = ennemi.fight(perso);
+                    ennemi.fight(perso);
                     //si l'ennemi meurt remplacer la case par une case vide
                     if (ennemi.getVie() == 0) {
                         plateau.set(playerCase, new EventEmpty());
