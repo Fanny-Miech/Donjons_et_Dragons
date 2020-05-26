@@ -24,7 +24,7 @@ public class Main {
 
         bdd.createHero("Magicien", "test", 1, 1, "aucun");
 
-        bdd.updateHero(5, "Guerrier", "modif_ok", 0, 0, "aucun");
+        bdd.updateHero(4, "Guerrier", "modif_ok", 4, 0, "aucun");
 
         bdd.deleteHero();
 

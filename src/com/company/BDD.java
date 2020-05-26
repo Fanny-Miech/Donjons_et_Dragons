@@ -2,12 +2,18 @@ package com.company;
 
 import java.sql.*;
 
+
+//regarder prepareStatement
+//String query = ""
+//pattern singleton
+//Connection : attribut ou variable locale ?
+
 public class BDD {
 
-    private Connection conn;
+    //private Connection conn;
     private Statement state;
     private ResultSet result;
-    private ResultSetMetaData resultMeta;
+    //private ResultSetMetaData resultMeta;
 
 
     /**
@@ -22,11 +28,11 @@ public class BDD {
             String user = "root";
             String passwd = "";
 
-            this.conn = DriverManager.getConnection(url, user, passwd);
+            Connection conn = DriverManager.getConnection(url, user, passwd);
             System.out.println("Connection effective !");
 
             //Création d'un objet Statement (permet d'executer des instructions sql)
-            this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            this.state = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             //on recupère les MetaData (données relatives à la table : nom de la table, des champs, nombre de lignes, type des données,...)
             //this.resultMeta = result.getMetaData();
