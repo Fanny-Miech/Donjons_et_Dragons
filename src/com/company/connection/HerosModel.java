@@ -1,56 +1,27 @@
-package com.company;
+package com.company.connection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
+public class HerosModel {
 
-//regarder prepareStatement
-//String query = ""
-//pattern singleton
-//Connection : attribut ou variable locale ?
+    private Connection conn = Database.getInstance().getConnect();
 
-public class BDD {
-
-    //private Connection conn;
     private Statement state;
     private ResultSet result;
-    //private ResultSetMetaData resultMeta;
-
-
-    /**
-     * Etablit la connexion avec la BDD
-     */
-    public BDD() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver OK");
-
-            String url = "jdbc:mysql://localhost:3306/donjon_et_dragons";
-            String user = "root";
-            String passwd = "";
-
-            Connection conn = DriverManager.getConnection(url, user, passwd);
-            System.out.println("Connection effective !");
-
-            //Création d'un objet Statement (permet d'executer des instructions sql)
-            this.state = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-
-            //on recupère les MetaData (données relatives à la table : nom de la table, des champs, nombre de lignes, type des données,...)
-            //this.resultMeta = result.getMetaData();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    private String query = "SELECT * FROM heros";
+    private String query2 = this.query + " WHERE id= ";
 
     /**
      * Affiche l'id, le type et le nom des heros enregistrés en bdd
      */
     public void getHeroes() {
         try {
+            //Création d'un objet Statement (permet d'executer des instructions sql)
+            this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             //L'objet ResultSet contient le résultat de la requete SQL
-            this.result = this.state.executeQuery("select * from heros");
+            this.result = this.state.executeQuery(this.query);
 
             System.out.println("\nLISTE DES HEROS");
             System.out.println("--------------------------------");
@@ -76,9 +47,10 @@ public class BDD {
     public void getHero(int ID) {
         try {
             //Création d'un objet Statement (permet d'executer des instructions sql)
-            //this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
             //L'objet ResultSet contient le résultat de la requete SQL
-            this.result = this.state.executeQuery("select * from heros WHERE id=" + ID);
+            this.result = this.state.executeQuery(this.query2 + ID);
 
             this.result.first();
             System.out.println("\nDETAILS SUR LE HEROS " + ID);
@@ -104,6 +76,7 @@ public class BDD {
         try {
             this.state.executeUpdate("INSERT INTO heros (type, nom, niveauVie, niveauForce, equipement) VALUES ('" + type + "','" + nom + "','" + niveauVie + "','" + niveauForce + "','" + equipement + "')");
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,9 +89,9 @@ public class BDD {
     public void updateHero(int ID, String type, String nom, int niveauVie, int niveauForce, String equipement) {
         try {
             //Création d'un objet Statement (permet d'executer des instructions sql)
-            //this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            this.state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             //L'objet ResultSet contient le résultat de la requete SQL
-            this.result = this.state.executeQuery("select * from heros WHERE id=" + ID);
+            this.result = this.state.executeQuery(this.query2 + ID);
 
             this.result.first();
 
@@ -140,7 +113,6 @@ public class BDD {
             System.out.println("\t Après modification : ");
             this.getHero(ID);
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -152,26 +124,24 @@ public class BDD {
      */
     public void deleteHero() {
         try {
-            this.state.executeUpdate("DELETE FROM heros WHERE niveauVie=0");
-        }catch( Exception e) {
+            String query = "DELETE FROM heros WHERE niveauVie=0";
+            this.state.executeUpdate(query);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    /**
-     * clean (reinitialise a zero) les variables liees a la connexion avec la bdd
-     */
-    public void clean() {
+    public void clear() {
         try {
             this.result.close();
             this.state.close();
-        } catch (
-                Exception e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
 }
-
-

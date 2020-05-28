@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.connection.HerosModel;
 import com.company.personnages.Heros;
 
 import java.sql.*;
@@ -14,21 +15,22 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
 
-//
-//        BDD bdd;
-//        bdd = new BDD();
-//
-//        bdd.getHeroes();
-//
-//        bdd.getHero(2);
-//
-//        bdd.createHero("Magicien", "test", 1, 1, "aucun");
-//
-//        bdd.updateHero(4, "Guerrier", "modif_ok", 4, 0, "aucun");
-//
-//        bdd.deleteHero();
-//
-//        bdd.clean();
+
+        HerosModel herosModel;
+        herosModel = new HerosModel();
+
+        herosModel.getHeroes();
+
+        herosModel.getHero(2);
+
+        herosModel.createHero("Magicien", "test", 0, 10, "aucun");
+
+        herosModel.updateHero(9, "Guerrier", "modif_ok", 4, 0, "aucun");
+
+        herosModel.deleteHero();
+
+        herosModel.clear();
+
 
 
         /**
@@ -47,8 +49,6 @@ public class Main {
         //lancement du jeu
         part1.readyToPlay(perso);
 
-
     }
-
 
 }
