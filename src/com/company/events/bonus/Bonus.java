@@ -17,8 +17,13 @@ public abstract class Bonus implements IEvent {
      *
      * @param h Heros
      */
-    @Override
-    public void interact(Heros h) {
+//    public abstract void interact(Heros h);
+
+    /**
+     * 
+     * @param h  Heros
+     */
+    public void titleEvent(Heros h) {
         //Réflexivité -> getSuperclass() chercher la class du parent.
         System.out.print("// Caisse surprise --> " + this.getClass().getSuperclass().getSimpleName());
     }

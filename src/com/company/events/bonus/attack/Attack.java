@@ -40,11 +40,7 @@ public abstract class Attack extends Bonus {
      *
      * @param h Heros
      */
-//    @Override
-//    public void interact(Heros h) {
-//        super.interact(h);
-//        //System.out.println(super.toString());
-//    }
+//    public abstract void interact(Heros h);
 
     /**
      * @return nom de cette arme et sa force

@@ -25,7 +25,7 @@ public abstract class Sort extends Attack {
      */
     @Override
     public void interact(Heros h) {
-        super.interact(h);
+        this.titleEvent(h);
         //System.out.println("Sort");
 
         if (h instanceof Magicien) {

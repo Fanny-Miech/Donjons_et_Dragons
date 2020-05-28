@@ -25,7 +25,7 @@ public abstract class Arme extends Attack {
      */
     @Override
     public void interact(Heros h) {
-        super.interact(h);
+        this.titleEvent(h);
         //System.out.println("Arme");
 
         if (h instanceof Guerrier) {
