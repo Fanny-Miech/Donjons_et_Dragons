@@ -12,11 +12,14 @@ public class HerosModel {
      * Affiche l'id, le type et le nom des heros enregistrés en bdd
      */
     public void getHeroes() {
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
         try {
-            PreparedStatement prepare;
+
             prepare = this.conn.prepareStatement(this.query);
 
-            ResultSet result = prepare.executeQuery();
+            result = prepare.executeQuery();
 
             System.out.println("\nLISTE DES HEROS");
             System.out.println("--------------------------------");
@@ -27,11 +30,11 @@ public class HerosModel {
                 System.out.println("\n--------------------------------");
             }
 
-            result.close();
-            prepare.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            this.clearStatement(prepare);
+            this.clearResult(result);
         }
 
     }
@@ -43,19 +46,18 @@ public class HerosModel {
      * @param ID int
      */
     public void getHero(int ID) {
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
         try {
-            Statement state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-//            PreparedStatement prepare;
-            String query = "SELECT * FROM heros WHERE id=";
-//            prepare = this.conn.prepareStatement(query);
 
+            String query = "SELECT * FROM heros WHERE id=?";
+            prepare = this.conn.prepareStatement(query);
 
+            prepare.setInt(1, ID);
+            result = prepare.executeQuery();
 
-            ResultSet result = state.executeQuery(query + ID);
-
-//            prepare.setInt(1, ID);
-
-            result.first();
+            result.next();
             System.out.println("\nDETAILS SUR LE HEROS " + ID);
             System.out.println("--------------------------------");
             System.out.print("\t Type : " + result.getString("type") + "\t |");
@@ -65,13 +67,12 @@ public class HerosModel {
             System.out.print("\t Equipement : " + result.getString("equipement") + "\t |");
             System.out.println("\n--------------------------------");
 
-//            prepare.close();
-            result.close();
-            state.close();
 
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            this.clearResult(result);
+            this.clearStatement(prepare);
         }
 
     }
@@ -80,10 +81,12 @@ public class HerosModel {
      * cree un nv heros en bdd
      */
     public void createHero(String type, String nom, int niveauVie, int niveauForce, String equipement) {
-        try {
-            Statement state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        Statement state = null;
+        PreparedStatement prepare = null;
 
-            PreparedStatement prepare;
+        try {
+//            state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
             prepare = this.conn.prepareStatement("INSERT INTO heros (type, nom, niveauVie, niveauForce, equipement) VALUES (?,?,?,?,?)");
 
             prepare.setString(1, type);
@@ -94,19 +97,17 @@ public class HerosModel {
 
             prepare.executeUpdate();
 
-            prepare.close();
-            state.close();
-
-
 //
 //            String query = "INSERT INTO heros (type, nom, niveauVie, niveauForce, equipement) VALUES ('" + type + "','" + nom + "','" + niveauVie + "','" + niveauForce + "','" + equipement + "')";
 //            System.out.println(query);
 //            this.state.executeUpdate(query);
 
 
-
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            this.clearStatement(state);
+            this.clearStatement(prepare);
         }
 
     }
@@ -115,51 +116,88 @@ public class HerosModel {
      * modifie un heros de la bdd
      */
     public void updateHero(int ID, String nom) {
+
+        Statement state = null;
+        PreparedStatement prepare = null;
+
         try {
             //Création d'un objet Statement (permet d'executer des instructions sql)
-            Statement state;
+
             state = this.conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-            PreparedStatement prepare;
             prepare = this.conn.prepareStatement("UPDATE heros set nom=? WHERE id=?");
 
             prepare.setString(1, nom);
             prepare.setInt(2, ID);
 
-            int i = prepare.executeUpdate();
-            System.out.println((i+ " héros modifié"));
-
-            state.close();
-            prepare.close();
+            prepare.executeUpdate();
+            System.out.println(("héros modifié"));
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            this.clearStatement(state);
+            this.clearStatement(prepare);
         }
 
     }
 
     /**
      * supprime un heros de la bdd en fonction de son id
+     *
      * @param id int
      */
     public void deleteHero(int id) {
+
+        PreparedStatement prepare = null;
+
         try {
             String query = "DELETE FROM heros WHERE id =?";
 
-            PreparedStatement prepare;
             prepare = this.conn.prepareStatement(query);
             prepare.setInt(1, id);
 
             prepare.executeUpdate();
 
-            prepare.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            clearStatement(prepare);
         }
         System.out.println("Le Héros " + id + " a été supprimé.");
 
     }
 
+
+    /**
+     * @param result ResultSet
+     */
+    public void clearResult(ResultSet result) {
+
+        try {
+            if (result != null) {
+                result.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
+
+    /**
+     *
+     * @param st statement
+     */
+    public void clearStatement(Statement st) {
+
+        try {
+            if (st != null) {
+                st.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+    }
 
 }
