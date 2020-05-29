@@ -35,6 +35,9 @@ public class Main {
         /**
          * Declare et instancie un scanner qu'on passera en parametre
          */
+
+        Ascii.hello();
+
         Scanner sc = new Scanner(System.in);
 
 
