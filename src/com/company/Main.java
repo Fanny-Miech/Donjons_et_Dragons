@@ -16,20 +16,20 @@ public class Main {
         // write your code here
 
 
-        HerosModel herosModel;
-        herosModel = new HerosModel();
-
-        herosModel.getHeroes();
-
-        herosModel.getHero(2);
-
-        herosModel.createHero("Magicien", "test", 0, 10, "aucun");
-
-        herosModel.updateHero(9, "Guerrier", "modif_ok", 4, 0, "aucun");
-
-        herosModel.deleteHero();
-
-        herosModel.clear();
+//        HerosModel herosModel;
+//        herosModel = new HerosModel();
+//
+//        herosModel.getHeroes();
+//
+//        herosModel.getHero(2);
+//
+//        herosModel.createHero("Magicien", "test", 0, 10, "aucun");
+//
+//        herosModel.updateHero(9, "Guerrier", "modif_ok", 4, 0, "aucun");
+//
+//        herosModel.deleteHero();
+//
+//        herosModel.clear();
 
 
 
@@ -44,10 +44,12 @@ public class Main {
         part1.welcome();
 
         //choix du perso
-        Heros perso = part1.chooseYourPerso(sc);
+        Heros perso = part1.doWhat();
 
-        //lancement du jeu
-        part1.readyToPlay(perso);
+        if (perso != null) {
+            //lancement du jeu
+            part1.readyToPlay(perso);
+        }
 
     }
 

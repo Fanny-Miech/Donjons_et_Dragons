@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.connection.HerosModel;
 import com.company.personnages.*;
 
 //Nécessaire pour lire les input du player
@@ -10,8 +11,8 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    private static Scanner scanner;
-    //private Scanner scanner = new Scanner(System.in);
+    //private static Scanner scanner;
+    private static final Scanner scanner = new Scanner(System.in);
 
 
     //*********************************************************************
@@ -28,6 +29,46 @@ public class Menu {
                 "\n---------------------------------------------------------------------");
         System.out.println("\nPrêt à en découdre ?");
         System.out.println("\nNB : tu peux quitter le jeu à tout moment en tapant 'q'.");
+    }
+
+    //*************************************************************************
+    //                  WHAT DO YOU WANT TO DO ?
+    //**************************************************************************
+
+    public Heros doWhat() {
+        HerosModel hm;
+        hm = new HerosModel();
+        Heros heros = null;
+
+        System.out.println("Voici la liste de nos Héros");
+        hm.getHeroes();
+        System.out.println("\nQue veux-tu faire ?" +
+                "\n-> Créer un nouveau héros (cr)" +
+                "\n-> Charger un héros existant pour jouer (ch)" +
+                "\n-> Modifier un héros (m)" +
+                "\n-> Supprimer un héros (s)" +
+                "\nTape cr / ch / m ou s");
+        String playerChoice = scanner.nextLine();
+        toQuit(playerChoice);
+
+        if (playerChoice.equals("cr")) {
+            heros = this.chooseYourPerso();
+        } else if (playerChoice.equals("ch") || playerChoice.equals("m") || playerChoice.equals("s")) {
+            System.out.println("Saisis à présent le numero du personnage que tu as choisi");
+            int id = scanner.nextInt();
+
+            switch (playerChoice) {
+                case "ch" -> heros = this.loadHerosModel(id);
+                case "m" -> this.updateHerosModel(id);
+                case "s" -> hm.deleteHero(id);
+
+            }
+        } else {
+            heros = this.doWhat();
+        }
+
+        return heros;
+
     }
 
 
@@ -73,10 +114,9 @@ public class Menu {
      * Cette methode demande au joueur de choisir son Heros : Guerrier ou Magicien
      * Le joueur peut quitter le jeu à tout moment en tapant 'q'
      *
-     * @param scanner Scanner
      * @return heros Heros
      */
-    public Heros chooseYourPerso(Scanner scanner) {
+    public Heros chooseYourPerso() {
 
         /**
          * isReady est un boolean qui conditionne la boucle while suivante.
@@ -122,12 +162,12 @@ public class Menu {
 
         }
 
-        System.out.println("-----------------------------------------\nVeux-tu modifier ton perso ? (o/n) ");
-        String modif = scanner.nextLine();
-        this.toQuit(modif);
-        if (modif.equals("o")) {
-            playerPerso = modifHeros(scanner, playerPerso);
-        }
+//        System.out.println("-----------------------------------------\nVeux-tu modifier ton perso ? (o/n) ");
+//        String modif = scanner.nextLine();
+//        this.toQuit(modif);
+//        if (modif.equals("o")) {
+//            playerPerso = modifHeros(scanner, playerPerso);
+//        }
 
         return playerPerso;
 
@@ -255,6 +295,9 @@ public class Menu {
         }
 
         System.out.println("\nVoilà ton Héros : " + yourHeros.toString());
+
+        this.createHerosModel(yourHeros);
+
         return yourHeros;
     }
 
@@ -299,132 +342,64 @@ public class Menu {
     }
 
 
-    //******************************************************************************************************************
-    //
-    //*********************************  OBSOLETE  ********************************************************************
-    //
-    //******************************************************************************************************************
-
-
-    //**********************************************************************************
-    //               CREATE WARRIOR
-    //**********************************************************************************
-
-
-    public Guerrier createYourWarrior() {
-
-        Guerrier guerrier;
-
-        // Input nom, vie et force du player
-
-        //Instancie un nouveau scanner
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nChoisis un nom pour ton Guerrier : ");
-        //nouvelle variable nom du magicien input
-        String guerrierName = scanner.nextLine();
-        if (guerrierName.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-        System.out.println("\nChoisis une force de vie pour ton Magicien (entre 5 et 10) : ");
-        String guerrierVie = scanner.nextLine();
-        if (guerrierVie.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-        System.out.println("\nChoisis une force d'attaque pour ton Magicien (entre 5 et 10) : ");
-        String guerrierForce = scanner.nextLine();
-        if (guerrierForce.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-
-        //Vérif des inputs et construction d'un Magicien en fonction des input
-
-        if (guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
-            guerrier = new Guerrier();
-        } else if (!guerrierName.equals("") && guerrierVie.equals("") && guerrierForce.equals("")) {
-            guerrier = new Guerrier(guerrierName);
-        } else {
-            if (Integer.parseInt(guerrierVie) > 10) {
-                guerrierVie = "10";
-            } else if (Integer.parseInt(guerrierVie) < 5) {
-                guerrierVie = "5";
-            }
-            if (Integer.parseInt(guerrierForce) > 10) {
-                guerrierForce = "10";
-            } else if (Integer.parseInt(guerrierForce) < 5) {
-                guerrierForce = "5";
-            }
-            guerrier = new Guerrier(guerrierName, Integer.parseInt(guerrierVie), Integer.parseInt(guerrierForce));
-        }
-
-        System.out.println(guerrier.toString());
-        return guerrier;
-    }
-
-
-    //******************************************************************************************
-    //                CREATE MAGICIEN
     //**************************************************************************************
+    //                CREATE HEROS-MODEL
+    //***************************************************************************************
 
-    public Magicien createYourWizard() {
+    public void createHerosModel(Heros heros) {
+        HerosModel hm;
+        hm = new HerosModel();
+        String type = heros.getClass().getSimpleName();
+        String nom = heros.getNom();
+        int vie = heros.getVie();
+        int force = heros.getForce();
+        String equipement = heros.getAttaque();
 
-        Magicien magicien;
+        System.out.println("\n" + type + " " + nom + " " + vie + " " + force + " " + equipement);
 
-        // Input nom, vie et force du player
+        hm.createHero(type, nom, vie, force, equipement);
 
-        //Instancie un nouveau scanner
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nChoisis un nom pour ton Magicien : ");
-        //nouvelle variable nom du magicien input
-        String magicienName = scanner.nextLine();
-        if (magicienName.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-        System.out.println("\nChoisis une force de vie pour ton Magicien (entre 3 et 6) : ");
-        String magicienVie = scanner.nextLine();
-        if (magicienVie.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-        System.out.println("\nChoisis une force d'attaque pour ton Magicien (entre 8 et 15) : ");
-        String magicienForce = scanner.nextLine();
-        if (magicienForce.equals("Q")) {
-            System.out.println("A bientôt :)");
-            System.exit(0);
-        }
-
-
-        //Vérif des inputs et construction d'un Magicien en fonction des input
-
-        if (magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
-            magicien = new Magicien();
-        } else if (!magicienName.equals("") && magicienVie.equals("") && magicienForce.equals("")) {
-            magicien = new Magicien(magicienName);
-        } else {
-            if (Integer.parseInt(magicienVie) > 6) {
-                magicienVie = "6";
-            } else if (Integer.parseInt(magicienVie) < 3) {
-                magicienVie = "3";
-            }
-            if (Integer.parseInt(magicienForce) > 15) {
-                magicienForce = "15";
-            } else if (Integer.parseInt(magicienForce) < 8) {
-                magicienForce = "8";
-            }
-            magicien = new Magicien(magicienName, Integer.parseInt(magicienVie), Integer.parseInt(magicienForce));
-        }
-
-        System.out.println(magicien.toString());
-        return magicien;
+        System.out.println("Le héros " + heros.getNom() + " a été sauvegardé.");
     }
+
+    //*************************************************************************************
+    //               LOAD HEROS-MODEL
+    //*********************************************************************************
+
+    public Heros loadHerosModel(int id) {
+        HerosModel hm;
+        hm = new HerosModel();
+
+        Heros heros = null;
+
+
+        return heros;
+    }
+
+
+    //******************************************************************************
+    //                  UPDATE HEROS-MODEL
+    //*******************************************************************************
+
+    public void updateHerosModel(int id) {
+        HerosModel hm;
+        hm = new HerosModel();
+
+        hm.getHero(id);
+
+        System.out.println("Entre le nouveau nom de ton perso : ");
+        String newName = scanner.nextLine();
+        toQuit(newName);
+
+        if (!newName.equals("")) {
+            hm.updateHero(id, newName);
+        } else {
+            this.updateHerosModel(id);
+        }
+
+
+    }
+
+
 }
+

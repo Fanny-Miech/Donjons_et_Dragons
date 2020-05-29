@@ -27,7 +27,7 @@ public class Magicien extends Heros {
     }
 
     public Magicien(String pickNom, int pickVie, int pickForce) {
-        super(pickNom, pickVie, pickForce, "??", "??");
+        super(pickNom, pickVie, pickForce, "aucun", "??");
 
     }
 

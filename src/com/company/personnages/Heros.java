@@ -25,7 +25,7 @@ public abstract class Heros {
 //        nom = "Inconnu";
 //        vie = 3;
 //        force = 5;
-//        attaque = "??";
+//        attaque = "aucun";
 //        defense = "??";
         this("Inconnu");
     }
@@ -39,9 +39,9 @@ public abstract class Heros {
 //        nom = pickNom;
 //        vie = 3;
 //        force = 5;
-//        attaque = "??";
+//        attaque = "aucun";
 //        defense = "??";
-        this(pickNom, 3, 5, "??", "??");
+        this(pickNom, 3, 5, "aucun", "??");
     }
 
     /**

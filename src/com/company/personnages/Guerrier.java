@@ -42,7 +42,7 @@ public class Guerrier extends Heros {
      * @param pickForce int
      */
     public Guerrier(String pickNom, int pickVie, int pickForce) {
-        super(pickNom, pickVie, pickForce, "??", "??");
+        super(pickNom, pickVie, pickForce, "aucun", "??");
 
     }
 
