@@ -370,8 +370,20 @@ public class Menu {
         HerosModel hm;
         hm = new HerosModel();
 
-        Heros heros = null;
+        Heros heros;
 
+        String type = hm.getHeroType(id);
+        String nom = hm.getHeroNom(id);
+        int vie = hm.getHeroVie(id);
+        int force = hm.getHeroForce(id);
+
+        if (type.equals("Guerrier")) {
+            heros = new Guerrier(nom, vie, force);
+        } else {
+            heros = new Magicien(nom, vie, force);
+        }
+
+        System.out.println(heros.toString());
 
         return heros;
     }

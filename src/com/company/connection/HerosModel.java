@@ -77,6 +77,126 @@ public class HerosModel {
 
     }
 
+    //*******************************************************************************
+    //                  GET ELEMENTS FROM HEROS BY ID
+    //********************************************************************************
+
+    public String getHeroType(int id) {
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
+        String type = null;
+
+        try {
+
+            String query = "SELECT * FROM heros WHERE id=?";
+            prepare = this.conn.prepareStatement(query);
+
+            prepare.setInt(1, id);
+            result = prepare.executeQuery();
+
+            result.next();
+            type = result.getString("type");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.clearResult(result);
+            this.clearStatement(prepare);
+        }
+
+        return type;
+    }
+
+    public String getHeroNom(int id){
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
+        String nom = null;
+
+        try {
+
+            String query = "SELECT * FROM heros WHERE id=?";
+            prepare = this.conn.prepareStatement(query);
+
+            prepare.setInt(1, id);
+            result = prepare.executeQuery();
+
+            result.next();
+            nom = result.getString("nom");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.clearResult(result);
+            this.clearStatement(prepare);
+        }
+
+        return nom;
+
+    }
+
+    public int getHeroVie(int id){
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
+        int vie = 0;
+
+        try {
+
+            String query = "SELECT * FROM heros WHERE id=?";
+            prepare = this.conn.prepareStatement(query);
+
+            prepare.setInt(1, id);
+            result = prepare.executeQuery();
+
+            result.next();
+            vie = result.getInt("niveauVie");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.clearResult(result);
+            this.clearStatement(prepare);
+        }
+
+        return vie;
+
+    }
+
+    public int getHeroForce(int id){
+        PreparedStatement prepare = null;
+        ResultSet result = null;
+
+        int force = 0;
+
+        try {
+
+            String query = "SELECT * FROM heros WHERE id=?";
+            prepare = this.conn.prepareStatement(query);
+
+            prepare.setInt(1, id);
+            result = prepare.executeQuery();
+
+            result.next();
+            force = result.getInt("niveauForce");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            this.clearResult(result);
+            this.clearStatement(prepare);
+        }
+
+        return force;
+
+    }
+
+
+    //******************************************************************
+    //                   CREATE HEROS-MODEL
+    //********************************************************************
+
     /**
      * cree un nv heros en bdd
      */
