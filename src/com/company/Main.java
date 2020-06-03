@@ -37,6 +37,7 @@ public class Main {
          */
 
         Ascii.chateau();
+        Ascii.title();
 
         Scanner sc = new Scanner(System.in);
 

@@ -1,4 +1,4 @@
-package com.company.test;
+package test;
 
 import com.company.personnages.Guerrier;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,25 +12,24 @@ class GuerrierTest {
 
     @BeforeEach
     void setUp() {
-        this.guerrier = new Guerrier("bob");
+        this.guerrier = new Guerrier();
     }
 
     @Test
     void setNom() {
         String newNom, res;
 
-        newNom = "newNom";
+        newNom = "Bob";
         guerrier.setNom(newNom);
-        res = guerrier.getNom();
-        assertEquals(newNom, res, "newNom = String");
+        res = newNom;
+        assertEquals(guerrier.getNom(), res, "newNom = String");
         //        if (newNom.equals(res)) System.out.println("Test setNom() réussi")
         //        else fail("Test setNom() raté.");
 
         newNom = "";
         guerrier.setNom(newNom);
         res = "Ninja";
-        assertEquals(res, guerrier.getNom(), "newNom = String vide");
-
+        assertEquals(guerrier.getNom(), res, "newNom = String vide");
 
     }
 
