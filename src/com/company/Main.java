@@ -36,7 +36,7 @@ public class Main {
          * Declare et instancie un scanner qu'on passera en parametre
          */
 
-        Ascii.hello();
+        Ascii.chateau();
 
         Scanner sc = new Scanner(System.in);
 
@@ -48,6 +48,7 @@ public class Main {
         //choix du perso
         Heros perso = part1.doWhat();
 
+        Ascii.dragon();
         if (perso != null) {
             //lancement du jeu
             part1.readyToPlay(perso);

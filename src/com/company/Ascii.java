@@ -3,7 +3,8 @@ package com.company;
 import org.w3c.dom.ls.LSOutput;
 
 public class Ascii {
-    public static void hello() {
+
+    public static void chateau() {
 
         System.out.println("" +
                 "                         o\n" +
@@ -30,5 +31,19 @@ public class Ascii {
                 ".|//\\............/...........\\........../../\\\\\\\n" +
                 "\n"
         );
+    }
+
+    public static void dragon(){
+        System.out.println("" +
+                "                   _,----,_\n" +
+                "                ,-'     /'\n" +
+                "              ,'       {,-~~-,\n" +
+                "             /       _/',-~~-(\\,)\n" +
+                "           ,'   ,-,/'{ (     {vv}\n" +
+                "          , ,-,/      \\ \\     }{\n" +
+                "          ;/           ) }   (^^)\n" +
+                ",,,,,,_,-~~-,_,-~~-,_,/ /    )  (\n" +
+                "''''~-,,-~~-,_,-~~-,_,-'\n" +
+                "\n");
     }
 }

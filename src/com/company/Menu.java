@@ -409,7 +409,6 @@ public class Menu {
             this.updateHerosModel(id);
         }
 
-
     }
 
 
